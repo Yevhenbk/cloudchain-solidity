@@ -13,7 +13,7 @@ const textStyles = cva(
         italic: 'text-center font-medium text-dark italic',
         button: 'text-xl text-white font-medium pl-6',
         card: 'text-2xl text-white font-medium'
-    }
+      }
     },
     defaultVariants: {
         intent: 'teritary'
