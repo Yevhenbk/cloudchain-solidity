@@ -13,6 +13,15 @@ a {
   text-decoration: none;
 }
 
+#t-stroke {
+  -webkit-text-stroke: 2px #1D1D29;
+}
+
+#b-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 * {
   box-sizing: border-box;
 }
