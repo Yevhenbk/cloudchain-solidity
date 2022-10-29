@@ -10,8 +10,7 @@ const textStyles = cva(
             h2: 'text-4xl text-white font-poppins font-bold',
             p: 'text-left text-2xl text-white font-mono',
             button: 'text-cennter text-xl text-white font-mono font-medium hover:text-backgroundButton px-6 py-2',
-            span: 'font-mono text-lg'
-
+            card: 'font-mono text-2xl text-white font-medium'
         }
         },
         defaultVariants: {

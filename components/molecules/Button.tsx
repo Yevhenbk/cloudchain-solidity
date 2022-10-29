@@ -1,9 +1,10 @@
-import clsx from "clsx"
-import { ButtonOrLink, Props as ButtonOrLinksProps } from "@atoms/ButtonOrLink"
+import clsx from 'clsx'
+import { ButtonOrLink, Props as ButtonOrLinksProps } from '@atoms/ButtonOrLink'
 
-export interface Props extends ButtonOrLinksProps {
-    intent?: 'button' | 'link'
-}
+export interface Props 
+    extends ButtonOrLinksProps {
+        intent?: 'button' | 'link'
+    }
 
 export function Button({ intent='button', ...props }: Props) {
   return (
@@ -14,6 +15,6 @@ export function Button({ intent='button', ...props }: Props) {
             intent === 'button',
             '': intent === 'link'}
         )} 
-        {...props}/>
+        {...props} />
   )
 }

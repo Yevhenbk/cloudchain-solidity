@@ -17,7 +17,7 @@ module.exports = {
         white: '#ffffff',
         headerWhite: '#ffffff65',
         disabledWhite: '#ffffff95',
-        backgroundButton: '#F56184'
+        backgroundButton: '#471932'
       }
     },
   },
