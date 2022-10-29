@@ -16,5 +16,3 @@ export function ParagraphOrHeader(props: Props) {
     </>
   )
 }
-
-// export default ParagraphOrHeader
