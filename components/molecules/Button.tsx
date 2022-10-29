@@ -10,10 +10,10 @@ export function Button({ intent='primary', ...props }: Props) {
   return (
     <ButtonOrLink
         className={clsx(
-            'flex flex-row items-center w-72 h-16',
-            {'border-2 rounded-full bg-gradient-to-l justify-between from-[#D17F82] to-[#5A3BF8]':
+            'flex flex-row items-center',
+            {'w-72 h-16 border-2 rounded-full bg-gradient-to-l justify-between group from-[#D17F82] to-[#5A3BF8] hover:bg-gradient-to-l hover:from-[#D17F82] hover:to-[#9B60B8]':
             intent === 'primary',
-            'justify-center': 
+            'text-dark text-xl': 
             intent === 'secondary'}
         )} 
         {...props} />
