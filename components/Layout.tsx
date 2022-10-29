@@ -5,7 +5,7 @@ type Props = {
     description?: string
 }
 
- export default function Layout(props: Props) {
+const Layout: React.FC<Props> = (props) => {
     return (
         <Head>
             <title>{props.title}</title>
@@ -14,3 +14,5 @@ type Props = {
         </Head>
     )
 }
+
+export default Layout
