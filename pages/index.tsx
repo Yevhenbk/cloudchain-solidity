@@ -19,7 +19,7 @@ const Home: NextPage = () =>  {
           <Text id='b-text' isHeader={true} intent='primary'>Cloudchain</Text>
         </Fade>
         <Fade left duration={1000}>
-          <div className='relative -top-8 -left-36 h-4 2xl:-top-12 2xl:-left-52'>
+          <div className='relative h-4 -top:-12 left:-36 md:-top-8 md:-left-36 2xl:-top-12 2xl:-left-52'>
             <Text id='t-stroke' isHeader={true} intent='secondary'>Welcome to</Text>
           </div>
         </Fade>
@@ -28,7 +28,8 @@ const Home: NextPage = () =>  {
           <div className='mt-6'>
             <Button isButton={true} intent='primary'>
               <Text isHeader={false} intent='button'>Connect Wallet</Text>
-              <RiExchangeLine className='text-5xl bg-white rounded-full p-3 group-hover:transition ease-in-out duration-300 group-hover:rotate-90 text-dark relative -right-6'/>
+              <RiExchangeLine className='text-5xl bg-white rounded-full p-3 group-hover:transition ease-in-out
+              duration-300 group-hover:rotate-90 relative -right-6'/>
             </Button>
           </div>
         </Fade>
