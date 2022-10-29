@@ -9,7 +9,7 @@ const Fade: any = require('react-reveal/Fade')
 const Home: NextPage = () =>  {
   return (
     <div className='w-[100vw] bg-[#EEF2F5] h-[100vh] overflow-hidden 
-    flex flex-col justify-around items-center'>
+    flex flex-row justify-around items-center'>
         <Layout title='Welcome | Digital Wallet'/>
       <section className='flex flex-col justify-start items-center max-w-[645px] 2xl:max-w-[800px]'>
         <Fade top duration={1200}>
@@ -24,7 +24,7 @@ const Home: NextPage = () =>  {
           </div>
         </Fade>
         <Fade duration={2000}>
-        <Text isHeader={false} intent='teritary'>Simply and securely transition crypto assets in two simple steps</Text>
+        <Text isHeader={false} intent='teritary'>Simply and securely transition crypto assets in two steps</Text>
           <div className='mt-6'>
             <Button isButton={true} intent='primary'>
               <Text isHeader={false} intent='button'>Connect Wallet</Text>
