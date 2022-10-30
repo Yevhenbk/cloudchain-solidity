@@ -71,7 +71,7 @@ export const TransactionProvider = (props: Props) => {
 
   return (
     <Context.Provider value={{ connectWallet, connctedAccount }}>
-        {props.children}
+      {props.children}
     </Context.Provider>
   )
 }

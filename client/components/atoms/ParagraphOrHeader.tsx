@@ -2,7 +2,7 @@ import * as React from 'react'
 
 export interface Props {
   children: React.ReactNode,
-  className?: any,
+  className?: string,
   isHeader: boolean,
   id?: string
 }
