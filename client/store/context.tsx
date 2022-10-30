@@ -1,22 +1,19 @@
 import * as React from 'react'
 import { ethers } from 'ethers'
 import { MetaMaskInpageProvider } from '@metamask/providers'
-
 import { contractABI, contractAddress } from '../static/utils/constants'
 
 export const Context = React.createContext<any>('')
 
 declare global {
   interface Window {
-    ethereum?: any;
+    ethereum?: any
   }
 }
 
 if (typeof window !== 'undefined') {
   var ethereum = window.ethereum as MetaMaskInpageProvider | any;
 }
-
-
 
 const getEthereumContract = () => {
   
