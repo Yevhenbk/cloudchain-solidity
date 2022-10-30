@@ -28,8 +28,8 @@ const Home: NextPage = () =>  {
           <div className='mt-6'>
             <Button isButton={true} intent='primary'>
               <Text isHeader={false} intent='button'>Connect Wallet</Text>
-              <RiExchangeLine className='text-5xl bg-white rounded-full p-3 group-hover:transition ease-in-out
-              duration-300 group-hover:rotate-90 relative -right-6'/>
+              <RiExchangeLine className='text-5xl bg-white rounded-full p-3 group-hover:transition group-hover:ease-in-out
+              group-hover:duration-300 duration-300 group-hover:rotate-90 relative -right-6'/>
             </Button>
           </div>
         </Fade>
