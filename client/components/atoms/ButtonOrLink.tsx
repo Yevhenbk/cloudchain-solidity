@@ -5,7 +5,8 @@ export interface Props {
   className?: string,
   isButton: boolean,
   link?: string
-  icon?: React.ReactNode
+  icon?: React.ReactNode,
+  onClick?: React.MouseEventHandler
 }
 
 export function ButtonOrLink(props: Props) {
@@ -13,7 +14,7 @@ export function ButtonOrLink(props: Props) {
     <>
       {!props.isButton ?
         <a href={props.link} className={props.className} target='_blank'>{props.children}</a> :
-        <button className={props.className}>{props.children}<span>{props.icon}</span></button>
+        <button className={props.className} onClick={props.onClick}>{props.children}<span>{props.icon}</span></button>
       }
     </>
   )

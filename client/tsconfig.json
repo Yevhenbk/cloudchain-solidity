@@ -20,6 +20,6 @@
       "@organisms/*": ["./components/organisms/*"] 
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "store/context.jsx"],
   "exclude": ["node_modules"]
 }
