@@ -32,7 +32,7 @@ const Home: NextPage = () =>  {
         <Fade duration={2000}>
         <Text isHeader={false} intent='teritary'>Simply and securely transition crypto assets in two steps</Text>
           <div className='mt-6'>
-            <Button isButton={true} onClick={connectedAccount ? connectWallet : () => location.replace('/wallet')}
+            <Button isButton={true} onClick={connectedAccount !== '' ? connectWallet : () => location.replace('/wallet')}
              intent='primary'>
               <Text isHeader={false} intent='button'>{connectedAccount ? 'My Wallet' : 'Connect Wallet'}</Text>
                 <span className='bg-white rounded-full w-[48px] h-[48px] flex justify-center items-center
