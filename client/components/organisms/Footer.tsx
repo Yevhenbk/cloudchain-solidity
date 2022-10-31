@@ -6,7 +6,7 @@ const Fade: any = require('react-reveal/Fade')
 export function Footer() {
   return (
     <Fade bottom duration={1200}>
-      <div className='absolute bottom-0 py-6 flex flex-row justify-around
+      <div className='absolute bottom-0 py-4 flex flex-row justify-around
       w-[96vw] border-t-2 border-text-dark'>
         <section className='flex flex-row justify-between gap-5'>
           <Text isHeader={false} intent='quaternary'>Find me Here</Text>

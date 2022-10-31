@@ -34,7 +34,7 @@ const Home: NextPage = () =>  {
           <div className='mt-6'>
             <Button isButton={true} onClick={connectedAccount !== '' ? connectWallet : () => location.replace('/wallet')}
              intent='primary'>
-              <Text isHeader={false} intent='button'>{connectedAccount ? 'My Wallet' : 'Connect Wallet'}</Text>
+              <Text isHeader={false} intent='button'>{connectedAccount ? 'Digital Wallet' : 'Connect Wallet'}</Text>
                 <span className='bg-white rounded-full w-[48px] h-[48px] flex justify-center items-center
                 relative -right-6'>
                   {connectedAccount ?

@@ -22,6 +22,9 @@ module.exports = {
         grey: '#d6dadd',
         gold: '#EBDD74',
         goldShadow: '#D4B629'
+      },
+      boxShadow: {
+        xl: 'rgba(108, 108, 112, 0.05) 0px 7px 29px 0px' 
       }
     },
   },
