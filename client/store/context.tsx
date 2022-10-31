@@ -33,7 +33,7 @@ type Props = {
 
 export const TransactionProvider = (props: Props) => {
 
-  const [ connctedAccount, setConnectedAccount ] = React.useState('') 
+  const [ connectedAccount, setConnectedAccount ] = React.useState('') 
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -57,6 +57,7 @@ export const TransactionProvider = (props: Props) => {
       } else {
         const accounts: any = await ethereum.request({ method: 'eth_requestAccounts' })
         setConnectedAccount(accounts[0])
+        location.assign('/wallet')
         console.log(accounts)
       }
     } catch (error) {
@@ -70,7 +71,7 @@ export const TransactionProvider = (props: Props) => {
   }, [])
 
   return (
-    <Context.Provider value={{ connectWallet, connctedAccount }}>
+    <Context.Provider value={{ connectWallet, connectedAccount }}>
       {props.children}
     </Context.Provider>
   )

@@ -4,14 +4,14 @@ import Layout from '../components/Layout'
 import { Text } from '@molecules/Text'
 import { Button } from '@molecules/Button'
 import { RiExchangeLine } from 'react-icons/ri'
+import { TfiWallet } from 'react-icons/tfi'
 import { Footer } from '@organisms/Footer'
 import { Context } from '../store/context'
 const Fade: any = require('react-reveal/Fade')
 
 const Home: NextPage = () =>  {
-  const { connectWallet, value } = React.useContext(Context)
 
-  console.log(value)
+  const { connectWallet, connectedAccount } = React.useContext(Context)
 
   return (
     <div className='w-[100vw] bg-[#EEF2F5] h-[100vh] overflow-hidden 
@@ -32,10 +32,16 @@ const Home: NextPage = () =>  {
         <Fade duration={2000}>
         <Text isHeader={false} intent='teritary'>Simply and securely transition crypto assets in two steps</Text>
           <div className='mt-6'>
-            <Button isButton={true} onClick={connectWallet} intent='primary'>
-              <Text isHeader={false} intent='button'>Connect Wallet</Text>
-              <RiExchangeLine className='text-5xl bg-white rounded-full p-3 group-hover:transition group-hover:ease-in-out
-              group-hover:duration-300 duration-300 group-hover:rotate-90 relative -right-6'/>
+            <Button isButton={true} onClick={connectedAccount ? connectWallet : () => location.replace('/wallet')}
+             intent='primary'>
+              <Text isHeader={false} intent='button'>{connectedAccount ? 'My Wallet' : 'Connect Wallet'}</Text>
+                <span className='bg-white rounded-full w-[48px] h-[48px] flex justify-center items-center
+                relative -right-6'>
+                  {connectedAccount ?
+                  <TfiWallet className='text-xl'/>
+                  : <RiExchangeLine className='text-2xl group-hover:transition group-hover:ease-in-out
+                  group-hover:duration-300 duration-300 group-hover:rotate-90'/>}
+                </span>
             </Button>
           </div>
         </Fade>

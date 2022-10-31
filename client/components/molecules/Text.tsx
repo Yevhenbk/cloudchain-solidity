@@ -11,7 +11,7 @@ const textStyles = cva(
       quaternary: '2xl:text-xl text-center font-bold text-dark',
       quinary: '2xl:text-xl text-center font-medium text-dark',
       italic: '2xl:text-xl text-center font-medium text-dark italic',
-      button: '2xl:text-2xl text-xl text-white font-medium pl-6',
+      button: '2xl:text-2xl text-xl text-white font-medium pl-6 2xl:w-[210.05px] md:w-[179.05px]',
       card: 'text-2xl text-white font-medium'
       }
     },
