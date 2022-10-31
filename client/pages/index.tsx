@@ -16,7 +16,7 @@ const Home: NextPage = () =>  {
   return (
     <div className='w-[100vw] bg-[#EEF2F5] h-[100vh] overflow-hidden 
     flex flex-row justify-around items-center'>
-        <Layout title='Welcome | Digital Wallet'/>
+        <Layout title='Welcome | Cloudchain'/>
       <section className='flex flex-col justify-start items-center max-w-[645px] 2xl:max-w-[800px]'>
         <Fade top duration={1200}>
           <div className='bg-[url(../public/wavesOpacity.svg)] w-[100%] h-[110px] absolute top-0 left-0' />
@@ -38,7 +38,8 @@ const Home: NextPage = () =>  {
                 <span className='bg-white rounded-full w-[48px] h-[48px] flex justify-center items-center
                 relative -right-6'>
                   {connectedAccount ?
-                  <TfiWallet className='text-xl'/>
+                  <TfiWallet className='text-xl group-hover:transition group-hover:ease-in-out
+                  group-hover:duration-300 duration-300 group-hover:-rotate-45'/>
                   : <RiExchangeLine className='text-2xl group-hover:transition group-hover:ease-in-out
                   group-hover:duration-300 duration-300 group-hover:rotate-90'/>}
                 </span>
