@@ -33,7 +33,7 @@ type Props = {
 
 export const TransactionProvider = (props: Props) => {
 
-  const [ connectedAccount, setConnectedAccount ] = React.useState('') 
+  const [ connectedAccount, setConnectedAccount ] = React.useState<string>('') 
 
   const checkIfWalletIsConnected = async () => {
     try {
