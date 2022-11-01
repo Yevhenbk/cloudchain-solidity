@@ -10,7 +10,7 @@ const Fade: any = require('react-reveal/Fade')
 
 const Wallet: NextPage = () => {
 
-  const {  connectedAccount } = React.useContext(Context)
+  const {  connectedAccount, balance } = React.useContext(Context)
 
   return (
     <div className='w-[100vw] bg-[#EEF2F5] h-[100vh] overflow-hidden 
@@ -27,7 +27,7 @@ const Wallet: NextPage = () => {
             <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>
             <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>
           </div>
-          <Text isHeader={false} intent='balance'><FaEthereum /> 00.00</Text>
+          <Text isHeader={false} intent='balance'><FaEthereum /> {balance}</Text>
         </div>
       </section>
       <Footer/>

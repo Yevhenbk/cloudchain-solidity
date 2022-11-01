@@ -34,6 +34,7 @@ type Props = {
 export const TransactionProvider = (props: Props) => {
 
   const [ connectedAccount, setConnectedAccount ] = React.useState<string>('') 
+  const [ balance, setBalance ] = React.useState<string>('')
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -41,8 +42,7 @@ export const TransactionProvider = (props: Props) => {
         return alert('Please install Metamask extention')
       } else {
         const accounts: any = await ethereum.request({ method: 'eth_accounts' })
-        setConnectedAccount(accounts[0])
-        console.log(accounts)
+        accountChangeHandler(accounts[0])
       }
     } catch (error) {
       console.log(error)
@@ -50,20 +50,33 @@ export const TransactionProvider = (props: Props) => {
     }
   }
 
-  const connectWallet = async () => {
-    try {
-      if(!ethereum) {
-        return alert('Please install Metamask extention')
-      } else {
-        const accounts: any = await ethereum.request({ method: 'eth_requestAccounts' })
-        setConnectedAccount(accounts[0])
-        location.assign('/wallet')
-        console.log(accounts)
-      }
-    } catch (error) {
-      console.log(error)
-      throw new Error('No ethereum object')
+  const connectWallet = () => {
+    if(window.ethereum) {
+      const accounts: string = window.ethereum.request({ method: 'eth_requestAccounts' })
+      .then(
+        (res: any) => {
+          accountChangeHandler(res[0])
+          if (connectedAccount !== '') location.assign('/wallet')
+        })
+    } else {
+      alert('Please install Metamask extention')
     }
+  }
+
+  const getBalance = (address: string) => {
+    window.ethereum
+      .request({ 
+        method: 'eth_getBalance', 
+        params: [address, 'latest'] 
+      })
+      .then((balance: string) => {
+        setBalance(ethers.utils.formatEther(balance));
+      })
+  }
+
+  const accountChangeHandler = (account: string) => {
+    setConnectedAccount(account)
+    getBalance(account)
   }
 
   React.useEffect(() => {
@@ -71,7 +84,7 @@ export const TransactionProvider = (props: Props) => {
   }, [])
 
   return (
-    <Context.Provider value={{ connectWallet, connectedAccount }}>
+    <Context.Provider value={{ connectWallet, connectedAccount, balance }}>
       {props.children}
     </Context.Provider>
   )
