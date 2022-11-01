@@ -52,7 +52,7 @@ export const TransactionProvider = (props: Props) => {
 
   const connectWallet = () => {
     if(window.ethereum) {
-      const accounts: string = window.ethereum.request({ method: 'eth_requestAccounts' })
+      window.ethereum.request({ method: 'eth_requestAccounts' })
       .then(
         (res: any) => {
           accountChangeHandler(res[0])

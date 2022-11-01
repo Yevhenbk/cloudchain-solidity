@@ -22,7 +22,7 @@ const Wallet: NextPage = () => {
         </Fade>
         <div className='flex flex-col align-middle gap-10'>
           <Card address={connectedAccount}/>
-          <div className='flex flex-row align-middle gap-2 relative left-8'>
+          <div className='flex flex-row align-middle gap-2 relative left-12'>
             <span className='h-[.35rem] w-12 bg-dark rounded-full'/>
             <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>
             <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>

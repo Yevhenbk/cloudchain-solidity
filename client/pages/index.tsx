@@ -33,16 +33,15 @@ const Home: NextPage = () =>  {
         <Text isHeader={false} intent='teritary'>Simply and securely transition crypto assets in two steps</Text>
           <div className='mt-6'>
             <Button isButton={true} onClick={connectedAccount !== '' ? connectWallet : () => location.replace('/wallet')}
-             intent='primary'>
-              <Text isHeader={false} intent='button'>{connectedAccount ? 'Digital Wallet' : 'Connect Wallet'}</Text>
+             intent={connectedAccount === '' ? 'primary' : 'teritary'}>
+              <Text isHeader={false} intent={connectedAccount === '' ? 'button' : 'buttonCentered'}>{connectedAccount ? 'My Wallet' : 'Connect Wallet'}</Text>
+              {connectedAccount === '' ?
                 <span className='bg-white rounded-full w-[48px] h-[48px] flex justify-center items-center
                 relative -right-6'>
-                  {connectedAccount ?
-                  <TfiWallet className='text-xl group-hover:transition group-hover:ease-in-out
-                  group-hover:duration-300 duration-300 group-hover:-rotate-45'/>
-                  : <RiExchangeLine className='text-2xl group-hover:transition group-hover:ease-in-out
-                  group-hover:duration-300 duration-300 group-hover:rotate-90'/>}
-                </span>
+                 <RiExchangeLine className='text-2xl group-hover:transition group-hover:ease-in-out
+                  group-hover:duration-300 duration-300 group-hover:rotate-90'/>
+                </span> : 
+              <></>}
             </Button>
           </div>
         </Fade>

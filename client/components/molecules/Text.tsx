@@ -12,6 +12,7 @@ const textStyles = cva(
       quinary: '2xl:text-xl text-center font-medium text-dark',
       italic: '2xl:text-xl text-center font-medium text-dark italic',
       button: '2xl:text-2xl text-xl text-white font-medium pl-6 2xl:w-[210.05px] md:w-[179.05px]',
+      buttonCentered: '2xl:text-2xl text-xl text-white font-medium 2xl:w-[210.05px] md:w-[179.05px]',
       card: 'text-md bg-gradient-to-r from-goldShadow via-gold to-goldShadow font-mono font-extrabold uppercase w-[25rem] text-center py-2',
       watermark: 'text-md bg-gradient-to-r from-goldShadow via-gold to-goldShadow font-mono font-extrabold uppercase',
       address: 'text-xl text-white font-medium text-left',
