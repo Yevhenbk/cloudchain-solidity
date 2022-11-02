@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Text } from './Text'
-import { FaEthereum } from 'react-icons/fa'
 import { IoMdCloudy } from 'react-icons/io'
 
 export interface Props {

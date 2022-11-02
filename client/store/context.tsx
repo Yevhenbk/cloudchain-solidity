@@ -41,7 +41,7 @@ export const TransactionProvider = (props: Props) => {
       if(!ethereum) {
         return alert('Please install Metamask extention')
       } else {
-        const accounts: any = await ethereum.request({ method: 'eth_accounts' })
+        const accounts: string[] = await ethereum.request({ method: 'eth_accounts' })
         accountChangeHandler(accounts[0])
       }
     } catch (error) {

@@ -33,9 +33,9 @@ const Home: NextPage = () =>  {
         <Text isHeader={false} intent='teritary'>Simply and securely transition crypto assets in two steps</Text>
           <div className='mt-6'>
             <Button isButton={true} onClick={connectedAccount !== '' ? connectWallet : () => location.replace('/wallet')}
-             intent={connectedAccount === '' ? 'primary' : 'teritary'}>
-              <Text isHeader={false} intent={connectedAccount === '' ? 'button' : 'buttonCentered'}>{connectedAccount ? 'My Wallet' : 'Connect Wallet'}</Text>
-              {connectedAccount === '' ?
+             intent={!connectedAccount ? 'primary' : 'teritary'}>
+              <Text isHeader={false} intent={!connectedAccount ? 'button' : 'buttonCentered'}>{connectedAccount ? 'My Wallet' : 'Connect Wallet'}</Text>
+              {!connectedAccount ?
                 <span className='bg-white rounded-full w-[48px] h-[48px] flex justify-center items-center
                 relative -right-6'>
                  <RiExchangeLine className='text-2xl group-hover:transition group-hover:ease-in-out
