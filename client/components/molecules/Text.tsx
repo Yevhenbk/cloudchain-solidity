@@ -30,7 +30,7 @@ export interface Props
     extends ParagraphOrHeaderProps,
         VariantProps<typeof textStyles> {}
 
-export function Text({ intent, ...props }: Props) {
+export function Text({ intent='primary', ...props }: Props) {
   return (
     <ParagraphOrHeader className={textStyles({intent})} {...props} />
   )

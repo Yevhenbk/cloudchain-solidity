@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 import { Footer } from '@organisms/Footer'
 import { Card } from '@molecules/Card'
 import { Text } from '@molecules/Text'
+import { Wrapper } from '@molecules/Wrapper'
 import { FaEthereum } from 'react-icons/fa'
 import { Context } from '../store/context'
 const Fade: any = require('react-reveal/Fade')
@@ -13,10 +14,9 @@ const Wallet: NextPage = () => {
   const {  connectedAccount, balance } = React.useContext(Context)
 
   return (
-    <div className='w-[100vw] bg-[#EEF2F5] h-[100vh] overflow-hidden 
-    flex flex-row justify-around items-center'>
+    <Wrapper isMain={true}>
       <Layout title='Digital Wallet | Cloudchain'/>
-      <section className='flex flex-col justify-start items-center max-w-[645px] 2xl:max-w-[800px]'>
+      <Wrapper isMain={false} intent='section'>
         <Fade top duration={1200}>
           <div className='bg-[url(../public/wavesOpacity.svg)] w-[100%] h-[110px] absolute top-0 left-0' />
         </Fade>
@@ -29,9 +29,9 @@ const Wallet: NextPage = () => {
           </div>
           <Text isHeader={false} intent='balance'><FaEthereum /> {balance}</Text>
         </div>
-      </section>
+      </Wrapper>
       <Footer/>
-    </div>
+    </Wrapper>
   )
 }
 
