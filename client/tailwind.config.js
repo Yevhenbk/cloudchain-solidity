@@ -15,9 +15,11 @@ module.exports = {
       },
       colors: {
         white: '#ffffff',
+        secondary: '#EEF2F5',
         dark: '#1D1D29',
+        input: 'rgb(248, 248, 248)',
         headerWhite: '#ffffff65',
-        disabledWhite: '#ffffff95',
+        disabledWhite: '#ffff',
         backgroundButton: '#471932',
         grey: '#d6dadd',
         gold: '#EBDD74',

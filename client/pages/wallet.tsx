@@ -7,6 +7,8 @@ import { Text } from '@molecules/Text'
 import { Wrapper } from '@molecules/Wrapper'
 import { FaEthereum } from 'react-icons/fa'
 import { Context } from '../store/context'
+import { Button } from '@molecules/Button'
+import { Modal } from '@organisms/Modal'
 const Fade: any = require('react-reveal/Fade')
 
 const Wallet: NextPage = () => {
@@ -28,6 +30,11 @@ const Wallet: NextPage = () => {
             <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>
           </div>
           <Text isHeader={false} intent='balance'><FaEthereum /> {balance}</Text>
+        </div>
+      </Wrapper>
+      <Wrapper isMain={false} intent='section'>
+        <div className='flex flex-col gap-5 items-end'>
+          <Modal/>
         </div>
       </Wrapper>
       <Footer/>
