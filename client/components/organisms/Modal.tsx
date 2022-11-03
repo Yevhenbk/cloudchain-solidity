@@ -15,27 +15,27 @@ export function Modal() {
       <div className='flex flex-col text-end'>
         <Text id='b-text' isHeader={true} intent='primaryLabel'>Crypto Transfers</Text>
         <div className='relative -top-2'>
-          <Text isHeader={true} intent='secondaryLabel'>all under one roof</Text> 
+          <Text isHeader={true} intent='secondaryLabel'>across the world</Text> 
         </div>
       </div>
       <div className='flex flex-col justify-center gap-4'>
         <div className='flex flex-col justify-start gap-1'>
           <Label for='receiver'>Receiver's Address</Label>
-          <Input type='text' id='receiver' />
+          <Input type='text' id='receiver' placeholder='Ex.0X2FA7EA67...8F3G394C98' />
         </div>
         <div className='flex flex-row justify-between'>
           <div className='flex flex-col justify-start gap-1'>
             <Label for='amount'>Amount (ETH)</Label>
-            <Input intent='secondary' type='number' id='amount' />
+            <Input intent='secondary' type='number' id='amount' placeholder='0.00' />
           </div>
           <div className='flex flex-col justify-start gap-1 relative -right-[2.5%]'>
             <Label for='keyword'>Keyword</Label>
-            <Input intent='secondary' type='text' id='keyword' />
+            <Input intent='secondary' type='text' id='keyword' placeholder='Gif name' />
           </div>
         </div>
         <div className='flex flex-col justify-start gap-1'>
           <Label for='message'>Concept (optional)</Label>
-          <Input type='text' id='message' />
+          <Input type='text' id='message' placeholder='Enter a message...' />
         </div>
       </div>
       <div className='flex flex-col items-end'>

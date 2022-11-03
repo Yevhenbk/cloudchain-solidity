@@ -11,7 +11,7 @@ export function Input({ intent='primary', ...props}: Props) {
   return (
     <IsInput
       className={clsx(
-        'p-2 bg-input border-[1px] border-[#ebebeb] rounded-md',
+        'p-2 bg-input border-[1px] text-dark border-[#e8e7e7] rounded-md outline-grey',
         {'w-[100%]':
         intent === 'primary',
         'w-[95%]':

@@ -37,6 +37,14 @@ const Wallet: NextPage = () => {
           <Modal/>
         </div>
       </Wrapper>
+      <Wrapper isMain={false} intent='section'>
+        <div className='flex flex-col text-center'>
+          <Text id='b-text' isHeader={true} intent='primaryLabel'>Latest transactions</Text>
+          <div className='relative -top-2'>
+            <Text isHeader={true} intent='secondaryLabel'>all under one roof</Text> 
+          </div>
+        </div>
+      </Wrapper>
       <Footer/>
     </Wrapper>
   )
