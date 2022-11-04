@@ -20,7 +20,7 @@ export function Modal() {
 
   const { formData, sendTransaction, setFormData } = React.useContext(Context)
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.MouseEvent<Element, MouseEvent>) => {
     const { address, amount, keyword, message }: Data = formData
 
     e.preventDefault()
