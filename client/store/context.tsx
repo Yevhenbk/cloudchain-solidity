@@ -12,7 +12,8 @@ declare global {
 }
 
 if (typeof window !== 'undefined') {
-  var ethereum = window.ethereum as MetaMaskInpageProvider | any;
+  var ethereum = window.ethereum as MetaMaskInpageProvider | any
+  var localStorage = window.localStorage.getItem('transactionCount') as string | number | null
 }
 
 const getEthereumContract = () => {
@@ -21,11 +22,7 @@ const getEthereumContract = () => {
   const signer = provider.getSigner()
   const transactionContract = new ethers.Contract(contractAddress, contractABI, signer)
 
-  console.log({
-    provider,
-    signer,
-    transactionContract
-  })
+  return transactionContract
 }
 
 type Props = {
@@ -51,6 +48,8 @@ export const TransactionProvider = (props: Props) => {
     keyword: '', 
     message: '' 
     })
+  const [ isLoading, setIsLoading ] = React.useState<boolean>(false) 
+  const [ transactionCount, setTransactionCount ] = React.useState<string | number | null>(localStorage) 
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -95,13 +94,37 @@ export const TransactionProvider = (props: Props) => {
     getBalance(account)
   }
 
-  const sendTransaction = () => {      
+  const sendTransaction = async () => {      
     if(!ethereum) {
       return alert('Please install Metamask extention')
     } else {
       const { address, amount, keyword, message }: Data = formData
-      getEthereumContract()
+      const trannsactionContract = getEthereumContract()
+      const parseAmount = ethers.utils.parseEther(amount)
+
+      await ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [{
+          from: connectedAccount,
+          to: address,
+          gas: '0x5208',
+          value: parseAmount._hex
+        }]
+      })
+
+      const transactionHash = await trannsactionContract.addToBlockchain(address, parseAmount, message, keyword)
+
+      setIsLoading(true)
+      console.log(`Loading - ${transactionHash.hash}`)
+      await transactionHash.wait()
+      setIsLoading(false)
+      console.log(`Success - ${transactionHash.hash}`)
+
+      const transactionCount = await trannsactionContract.getTransactionCount()
+
+      setTransactionCount(transactionCount.toNumber())
     }
+    
   }
 
   React.useEffect(() => {
