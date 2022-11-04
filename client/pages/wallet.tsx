@@ -29,7 +29,10 @@ const Wallet: NextPage = () => {
             <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>
             <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>
           </div>
-          <Text isHeader={false} intent='balance'><FaEthereum /> {balance}</Text>
+          <div className='flex flex-row justify-start items-center gap-1'>
+            <FaEthereum className='2xl:text-5xl font-semibold text-4xl text-dark relative -top-1' />
+            <Text isHeader={false} intent='balance'>{balance}</Text>
+          </div>
         </div>
       </Wrapper>
       <Wrapper isMain={false} intent='section'>

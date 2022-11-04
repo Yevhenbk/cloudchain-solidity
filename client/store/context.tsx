@@ -13,7 +13,7 @@ declare global {
 
 if (typeof window !== 'undefined') {
   var ethereum = window.ethereum as MetaMaskInpageProvider | any
-  var localStorage = window.localStorage.getItem('transactionCount') as string | number | null
+  var getLocalStorageItem = window.localStorage.getItem('transactionCount') as string | number | null
 }
 
 const getEthereumContract = () => {
@@ -49,7 +49,7 @@ export const TransactionProvider = (props: Props) => {
     message: '' 
     })
   const [ isLoading, setIsLoading ] = React.useState<boolean>(false) 
-  const [ transactionCount, setTransactionCount ] = React.useState<string | number | null>(localStorage) 
+  const [ transactionCount, setTransactionCount ] = React.useState<string | number | null>(getLocalStorageItem) 
 
   const checkIfWalletIsConnected = async () => {
     try {
