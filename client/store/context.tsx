@@ -27,14 +27,30 @@ const getEthereumContract = () => {
     transactionContract
   })
 }
+
 type Props = {
   children: React.ReactNode
+}
+
+interface Data {
+  address: string,
+  amount: string,
+  keyword: string,
+  message: string
 }
 
 export const TransactionProvider = (props: Props) => {
 
   const [ connectedAccount, setConnectedAccount ] = React.useState<string>('') 
   const [ balance, setBalance ] = React.useState<string>('')
+  const [ formData, setFormData ] = React.useState<{
+    address: string, amount: string, keyword: string, message: string 
+  }>({
+    address: '', 
+    amount: '', 
+    keyword: '', 
+    message: '' 
+    })
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -79,12 +95,22 @@ export const TransactionProvider = (props: Props) => {
     getBalance(account)
   }
 
+  const sendTransaction = () => {      
+    if(!ethereum) {
+      return alert('Please install Metamask extention')
+    } else {
+      const { address, amount, keyword, message }: Data = formData
+      getEthereumContract()
+    }
+  }
+
   React.useEffect(() => {
     checkIfWalletIsConnected()
   }, [])
 
   return (
-    <Context.Provider value={{ connectWallet, connectedAccount, balance }}>
+    <Context.Provider value={{ connectWallet, connectedAccount, balance,
+    formData, setFormData, sendTransaction }}>
       {props.children}
     </Context.Provider>
   )

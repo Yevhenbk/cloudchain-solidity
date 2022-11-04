@@ -5,13 +5,15 @@ export interface Props {
   className?: string,
   placeholder?: string,
   value?: string,
-  id: string  
+  id: string,
+  name?: string,
+  onChange?: any  
 }
 
 export function IsInput(props: Props) {
   return (
     <input type={props.type} className={props.className}
     placeholder={props.placeholder} value={props.value}
-    name='modal_input' id={props.id} />
+    id={props.id} name={props.name} onChange={props.onChange} />
   )
 }
