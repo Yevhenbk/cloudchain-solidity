@@ -22,9 +22,9 @@ const Wallet: NextPage = () => {
         <Fade top duration={1200}>
           <div className='bg-[url(../public/wavesOpacity.svg)] w-[100%] h-[110px] absolute top-0 left-0' />
         </Fade>
-        <div className='flex flex-col align-middle gap-10'>
+        <div className='flex flex-col items-center gap-10'>
           <Card address={connectedAccount}/>
-          <div className='flex flex-row align-middle gap-2 relative left-12'>
+          <div className='flex flex-row align-middle gap-2 relative -left-28'>
             <span className='h-[.35rem] w-12 bg-dark rounded-full'/>
             <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>
             <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>
