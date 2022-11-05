@@ -86,7 +86,7 @@ export const TransactionProvider = (props: Props) => {
       } else {
         const accounts: string = await ethereum.request({ method: 'eth_accounts' })
         accountChangeHandler(accounts[0])
-        // getAllTransactions()
+        getAllTransactions()
       }
     } catch (error) {
       console.log(error)
@@ -167,7 +167,7 @@ export const TransactionProvider = (props: Props) => {
 
   React.useEffect(() => {
     checkIfWalletIsConnected()
-    // checkIfTransactionsExists()
+    checkIfTransactionsExists()
   }, [])
 
   return (
