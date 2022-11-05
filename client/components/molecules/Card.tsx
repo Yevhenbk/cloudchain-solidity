@@ -11,7 +11,7 @@ export function Card(props: Props) {
   return (
     <div className='w-[25rem] h-[15rem] bg-dark bg-[url(../../static/public/worldMap.svg)]
     rounded-xl flex flex-col items-center justify-center object-cover z-50
-    bg-no-repeat bg-center shadow-xl shadow-gray-500'>
+    bg-no-repeat bg-center shadow-xl shadow-gray-500 relative -right-[41.215px]'>
       <div className='flex flex-row relative -top-16 -left-20 items-center gap-2'>
         <IoMdCloudy className='text-4xl text-[rgba(29, 29, 41, 1)] bg-gradient-to-r 
       from-goldShadow via-gold to-goldShadow rounded-full p-1'/>

@@ -51,17 +51,55 @@ export const TransactionProvider = (props: Props) => {
   const [ isLoading, setIsLoading ] = React.useState<boolean>(false) 
   const [ transactionCount, setTransactionCount ] = React.useState<string | number | null>(getLocalStorageItem) 
 
+  const getAllTransactions = async () => {
+    try {
+      if (ethereum) {
+        const transactionsContract = getEthereumContract()
+
+        const availableTransactions = await transactionsContract.getAllTransactions()
+        console.log(availableTransactions)
+
+        // const structuredTransactions = availableTransactions.map((transaction) => ({
+        //   addressTo: transaction.receiver,
+        //   addressFrom: transaction.sender,
+        //   timestamp: new Date(transaction.timestamp.toNumber() * 1000).toLocaleString(),
+        //   message: transaction.message,
+        //   keyword: transaction.keyword,
+        //   amount: parseInt(transaction.amount._hex) / (10 ** 18)
+        // }))
+
+        // console.log(structuredTransactions)
+
+        // setTransactions(structuredTransactions)
+      } else {
+        console.log('Ethereum is not present')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const checkIfWalletIsConnected = async () => {
     try {
       if(!ethereum) {
         return alert('Please install Metamask extention')
       } else {
-        const accounts: string[] = await ethereum.request({ method: 'eth_accounts' })
+        const accounts: string = await ethereum.request({ method: 'eth_accounts' })
         accountChangeHandler(accounts[0])
+        // getAllTransactions()
       }
     } catch (error) {
       console.log(error)
       throw new Error('No ethereum object')
+    }
+  }
+
+  const checkIfTransactionsExists = async () => {
+    if (ethereum) {
+      const transactionContract = getEthereumContract()
+      const currentTransactionCount = await transactionContract.getTransactionCount()
+
+      window.localStorage.setItem('transactionCount', currentTransactionCount)
     }
   }
 
@@ -85,7 +123,7 @@ export const TransactionProvider = (props: Props) => {
         params: [address, 'latest'] 
       })
       .then((balance: string) => {
-        setBalance(ethers.utils.formatEther(balance));
+        setBalance(ethers.utils.formatEther(balance))
       })
   }
 
@@ -99,7 +137,7 @@ export const TransactionProvider = (props: Props) => {
       return alert('Please install Metamask extention')
     } else {
       const { address, amount, keyword, message }: Data = formData
-      const trannsactionContract = getEthereumContract()
+      const transactionContract = getEthereumContract()
       const parseAmount = ethers.utils.parseEther(amount)
 
       await ethereum.request({
@@ -112,7 +150,7 @@ export const TransactionProvider = (props: Props) => {
         }]
       })
 
-      const transactionHash = await trannsactionContract.addToBlockchain(address, parseAmount, message, keyword)
+      const transactionHash = await transactionContract.addToBlockchain(address, parseAmount, message, keyword)
 
       setIsLoading(true)
       console.log(`Loading - ${transactionHash.hash}`)
@@ -120,7 +158,7 @@ export const TransactionProvider = (props: Props) => {
       setIsLoading(false)
       console.log(`Success - ${transactionHash.hash}`)
 
-      const transactionCount = await trannsactionContract.getTransactionCount()
+      const transactionCount = await transactionContract.getTransactionCount()
 
       setTransactionCount(transactionCount.toNumber())
     }
@@ -129,6 +167,7 @@ export const TransactionProvider = (props: Props) => {
 
   React.useEffect(() => {
     checkIfWalletIsConnected()
+    // checkIfTransactionsExists()
   }, [])
 
   return (

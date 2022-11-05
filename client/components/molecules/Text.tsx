@@ -19,7 +19,7 @@ const textStyles = cva(
       card: 'text-md bg-gradient-to-r from-goldShadow via-gold to-goldShadow font-mono font-extrabold uppercase w-[25rem] text-center py-2',
       watermark: 'text-md bg-gradient-to-r from-goldShadow via-gold to-goldShadow font-mono font-extrabold uppercase',
       address: 'text-xl text-white font-medium text-left',
-      balance: '2xl:text-4xl font-semibold text-3xl text-dark flex flex-row gap-2'
+      balance: '2xl:text-4xl font-semibold text-3xl text-dark'
       }
     },
     defaultVariants: {
