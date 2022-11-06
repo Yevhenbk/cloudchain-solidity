@@ -5,10 +5,6 @@ import { Input } from '@molecules/Input'
 import { Label } from '@molecules/Label'
 import { Context } from '../../store/context'
 
-interface Props {
-  onClick: React.MouseEventHandler
-}
-
 interface Data {
   address: string,
   amount: string,
@@ -45,7 +41,7 @@ export function Modal() {
       </div>
       <div className='flex flex-col justify-center gap-4'>
         <div className='flex flex-col justify-start gap-1'>
-          <Label for='receiver'>Receiver's Address</Label>
+          <Label for='receiver'>Receiver&apos;s Address</Label>
           <Input type='text' id='receiver' name='address' placeholder='Ex.0X2FA7EA67...8F3G394C98'
           onChange={(e: Event & {
             target: HTMLInputElement

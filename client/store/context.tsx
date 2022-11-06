@@ -50,51 +50,43 @@ export const TransactionProvider = (props: Props) => {
     })
   const [ isLoading, setIsLoading ] = React.useState<boolean>(false) 
   const [ transactionCount, setTransactionCount ] = React.useState<string | number | null>(getLocalStorageItem) 
+  const [ transactions, setTransactions ] = React.useState<any>([])
 
   const getAllTransactions = async () => {
-    try {
-      if (ethereum) {
-        const transactionsContract = getEthereumContract()
+    if (ethereum) {
+      const transactionsContract = getEthereumContract()
 
-        const availableTransactions = await transactionsContract.getAllTransactions()
-        console.log(availableTransactions)
+      const availableTransactions = await transactionsContract.getAllTransactions()
+      // console.log(availableTransactions)
 
-        // const structuredTransactions = availableTransactions.map((transaction) => ({
-        //   addressTo: transaction.receiver,
-        //   addressFrom: transaction.sender,
-        //   timestamp: new Date(transaction.timestamp.toNumber() * 1000).toLocaleString(),
-        //   message: transaction.message,
-        //   keyword: transaction.keyword,
-        //   amount: parseInt(transaction.amount._hex) / (10 ** 18)
-        // }))
+      const structuredTransactions = availableTransactions.map((transaction: any) => ({
+        addressTo: transaction.receiver,
+        addressFrom: transaction.sender,
+        timestamp: new Date(transaction.timestamp.toNumber() * 1000).toLocaleString(),
+        message: transaction.message,
+        keyword: transaction.keyword,
+        amount: parseInt(transaction.amount._hex) / (10 ** 18)
+      }))
 
-        // console.log(structuredTransactions)
+      console.log(structuredTransactions)
 
-        // setTransactions(structuredTransactions)
-      } else {
-        console.log('Ethereum is not present')
-      }
-    } catch (error) {
-      console.log(error)
+      setTransactions(structuredTransactions)
+    } else {
+      console.log('Ethereum is not present')
     }
   }
 
   const checkIfWalletIsConnected = async () => {
-    try {
-      if(!ethereum) {
-        return alert('Please install Metamask extention')
-      } else {
-        const accounts: string = await ethereum.request({ method: 'eth_accounts' })
-        accountChangeHandler(accounts[0])
-        getAllTransactions()
-      }
-    } catch (error) {
-      console.log(error)
-      throw new Error('No ethereum object')
+    if(!ethereum) {
+      return alert('Please install Metamask extention')
+    } else {
+      const accounts: string = await ethereum.request({ method: 'eth_accounts' })
+      accountChangeHandler(accounts[0])
+      getAllTransactions()
     }
   }
 
-  const checkIfTransactionsExists = async () => {
+  const checkIfTransactionExists = async () => {
     if (ethereum) {
       const transactionContract = getEthereumContract()
       const currentTransactionCount = await transactionContract.getTransactionCount()
@@ -167,12 +159,12 @@ export const TransactionProvider = (props: Props) => {
 
   React.useEffect(() => {
     checkIfWalletIsConnected()
-    checkIfTransactionsExists()
+    checkIfTransactionExists()
   }, [])
 
   return (
     <Context.Provider value={{ connectWallet, connectedAccount, balance,
-    formData, setFormData, sendTransaction }}>
+    formData, setFormData, sendTransaction, transactions }}>
       {props.children}
     </Context.Provider>
   )

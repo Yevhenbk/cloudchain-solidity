@@ -7,7 +7,7 @@ import { Text } from '@molecules/Text'
 import { Wrapper } from '@molecules/Wrapper'
 import { FaEthereum } from 'react-icons/fa'
 import { Context } from '../store/context'
-import { Button } from '@molecules/Button'
+import { Transactions } from '../components/organisms/Transactions'
 import { Modal } from '@organisms/Modal'
 const Fade: any = require('react-reveal/Fade')
 
@@ -41,11 +41,14 @@ const Wallet: NextPage = () => {
         </div>
       </Wrapper>
       <Wrapper isMain={false} intent='section'>
-        <div className='flex flex-col text-center'>
+        <div className='flex flex-col justify-center gap-6'>
+          <div className='flex flex-col text-center'>
           <Text id='b-text' isHeader={true} intent='primaryLabel'>Latest transactions</Text>
           <div className='relative -top-2'>
             <Text isHeader={true} intent='secondaryLabel'>all under one roof</Text> 
           </div>
+        </div>
+        <Transactions />
         </div>
       </Wrapper>
       <Footer/>
