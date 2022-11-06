@@ -18,9 +18,11 @@ if (typeof window !== 'undefined') {
 
 const getEthereumContract = () => {
   
-  const provider = new ethers.providers.Web3Provider(ethereum)
+  const provider = new ethers.providers.Web3Provider(window.ethereum)
   const signer = provider.getSigner()
   const transactionContract = new ethers.Contract(contractAddress, contractABI, signer)
+
+  console.log('signer', signer)
 
   return transactionContract
 }
@@ -92,6 +94,7 @@ export const TransactionProvider = (props: Props) => {
       const currentTransactionCount = await transactionContract.getTransactionCount()
 
       window.localStorage.setItem('transactionCount', currentTransactionCount)
+      console.log(localStorage)
     }
   }
 

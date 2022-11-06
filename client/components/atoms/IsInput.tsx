@@ -13,6 +13,6 @@ export function IsInput(props: Props) {
   return (
     <input type={props.type} className={props.className}
     placeholder={props.placeholder} value={props.value}
-    onChange={props.onChange} />
+    onChange={props.onChange} step='0.0001'/>
   )
 }
