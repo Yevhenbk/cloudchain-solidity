@@ -30,7 +30,7 @@ type Props = {
 }
 
 interface Data {
-  address: string,
+  addressTo: string,
   amount: string,
   keyword: string,
   message: string
@@ -41,9 +41,9 @@ export const TransactionProvider = (props: Props) => {
   const [ connectedAccount, setConnectedAccount ] = React.useState<string>('') 
   const [ balance, setBalance ] = React.useState<string>('')
   const [ formData, setFormData ] = React.useState<{
-    address: string, amount: string, keyword: string, message: string 
+    addressTo: string, amount: string, keyword: string, message: string 
   }>({
-    address: '', 
+    addressTo: '', 
     amount: '', 
     keyword: '', 
     message: '' 
@@ -57,7 +57,7 @@ export const TransactionProvider = (props: Props) => {
       const transactionsContract = getEthereumContract()
 
       const availableTransactions = await transactionsContract.getAllTransactions()
-      // console.log(availableTransactions)
+      console.log(availableTransactions)
 
       const structuredTransactions = availableTransactions.map((transaction: any) => ({
         addressTo: transaction.receiver,
@@ -128,7 +128,7 @@ export const TransactionProvider = (props: Props) => {
     if(!ethereum) {
       return alert('Please install Metamask extention')
     } else {
-      const { address, amount, keyword, message }: Data = formData
+      const { addressTo, amount, keyword, message }: Data = formData
       const transactionContract = getEthereumContract()
       const parseAmount = ethers.utils.parseEther(amount)
 
@@ -136,13 +136,13 @@ export const TransactionProvider = (props: Props) => {
         method: 'eth_sendTransaction',
         params: [{
           from: connectedAccount,
-          to: address,
+          to: addressTo,
           gas: '0x5208',
           value: parseAmount._hex
         }]
       })
 
-      const transactionHash = await transactionContract.addToBlockchain(address, parseAmount, message, keyword)
+      const transactionHash = await transactionContract.addToBlockchain(addressTo, parseAmount, message, keyword)
 
       setIsLoading(true)
       console.log(`Loading - ${transactionHash.hash}`)

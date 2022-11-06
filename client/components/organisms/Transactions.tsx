@@ -7,7 +7,7 @@ export function Transactions() {
   const { transactions, connectedAccount } = React.useContext(Context)
 
   return (
-    <div className='flex flex-col gap-4 h-[378px] overflow-hidden overflow-y-scroll'>
+    <div className='flex flex-col gap-4 h-[378px] overflow-hidden overflow-y-scroll w-[400px]'>
       {transactions.reverse().map((transaction: any, i: any) => (
         <Transaction key={i} {...transaction} />
       ))}

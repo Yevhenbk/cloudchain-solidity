@@ -19,7 +19,7 @@ export function Transaction(props: Props) {
 
   return (
     <div className='p-2 flex flex-row justify-between items-center rounded-lg bg-white
-    w-[400px] gap-2'>
+    w-[385px] gap-2 shadow-lg shadow-gray-300'>
       <img
         src={gifUrl || props.url}
         alt='nature'
