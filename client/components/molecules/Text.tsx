@@ -20,7 +20,7 @@ const textStyles = cva(
       watermark: 'text-md bg-gradient-to-r from-goldShadow via-gold to-goldShadow font-mono font-extrabold uppercase',
       address: 'text-xl text-white font-medium text-left',
       balance: 'font-semibold text-4xl text-dark',
-      transaction: 'text-dark font-semibold text-xs'
+      transaction: 'text-dark font-semibold text-sm'
       }
     },
     defaultVariants: {

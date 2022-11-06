@@ -29,7 +29,7 @@ const Home: NextPage = () =>  {
           </div>
         </Fade>
         <Fade duration={2000}>
-        <Text isHeader={false} intent='teritary'>Simply and securely transition crypto assets in two steps</Text>
+        <Text isHeader={false} intent='teritary'>Simply and securely transition crypto assets in two easy steps</Text>
           <div className='mt-6'>
             <Button isButton={true} onClick={connectedAccount !== '' ? connectWallet : () => location.replace('/wallet')}
              intent={!connectedAccount ? 'primary' : 'teritary'}>

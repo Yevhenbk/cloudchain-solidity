@@ -16,7 +16,7 @@ const Wallet: NextPage = () => {
   const {  connectedAccount, balance } = React.useContext(Context)
 
   return (
-    <Wrapper isMain={true}>
+    <Wrapper isMain={true} intent='transactions'>
       <Layout title='Digital Wallet | Cloudchain'/>
       <Wrapper isMain={false} intent='section'>
         <Fade top duration={1200}>
@@ -30,7 +30,7 @@ const Wallet: NextPage = () => {
             <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>
           </div>
           <div className='flex flex-row justify-start items-center gap-1'>
-            <FaEthereum className='2xl:text-5xl font-semibold text-4xl text-dark relative -top-1' />
+            <FaEthereum className='font-semibold text-5xl text-dark relative -top-1' />
             <Text isHeader={false} intent='balance'>{balance}</Text>
           </div>
         </div>
