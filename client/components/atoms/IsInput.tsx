@@ -5,14 +5,14 @@ export interface Props {
   className?: string,
   placeholder?: string,
   value?: string,
-  id: string,
-  onChange?: any  
+  id?: string,
+  onChange?: any
 }
 
 export function IsInput(props: Props) {
   return (
     <input type={props.type} className={props.className}
     placeholder={props.placeholder} value={props.value}
-    onChange={props.onChange} step='0.0001'/>
+    onChange={props.onChange} step='0.0001'></input>
   )
 }

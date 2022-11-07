@@ -27,7 +27,6 @@ module.exports = {
       },
       boxShadow: {
         xl: 'rgba(108, 108, 112, 0.05) 0px 7px 29px 0px' ,
-        inner: 'inset 0 -7px 9px -7px rgba(0,0,0,0.3)'
       }
     },
   },

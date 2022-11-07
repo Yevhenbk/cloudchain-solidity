@@ -42,7 +42,7 @@ export function Modal() {
       <div className='flex flex-col justify-center gap-4'>
         <div className='flex flex-col justify-start gap-1'>
           <Label for='receiver'>Receiver&apos;s Address</Label>
-          <Input type='text' id='receiver' placeholder='Ex.0X2FA7EA67...8F3G394C98'
+          <Input type='text' id='receiver' placeholder='Ex.0x2FA7EA67...8F3G394C98'
           onChange={(e: Event & {
             target: HTMLInputElement
           }) => setFormData({...formData, addressTo: e.target.value})} />

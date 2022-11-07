@@ -11,6 +11,7 @@ body {
 
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
   background: transparent;
 }
 
@@ -39,6 +40,24 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+#anim {
+  animation: animate 2.5s ease infinite;
+}
+
+@keyframes animate {
+  0% {
+    top: -1.5rem;
+  }
+  
+  50% {
+    top: -0.75rem;
+  }
+  
+  100% {
+    top: -1.5rem;
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {

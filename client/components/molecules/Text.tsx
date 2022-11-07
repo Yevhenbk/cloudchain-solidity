@@ -10,17 +10,18 @@ const textStyles = cva(
       secondary: '2xl:text-5xl md:text-4xl text-2xl text-transparent font-extrabold',
       secondaryLabel: 'text-xl text-dark font-bold h-4',
       teritary: '2xl:text-4xl text-center font-semibold text-3xl text-dark',
-      quaternary: '2xl:text-xl text-center font-bold text-dark',
-      quinary: '2xl:text-xl text-center font-medium text-dark',
-      italic: '2xl:text-xl text-center font-medium text-dark italic',
+      quaternary: 'text-xl text-center font-normal text-secondary',
+      quinary: '2xl:text-xl text-center font-normal text-secondary',
+      italic: '2xl:text-xl text-center font-normal text-secondary italic',
       button: '2xl:text-2xl text-xl text-white font-medium pl-6 2xl:w-[210.05px] md:w-[179.05px]',
-      buttonLabel: 'text-lg text-white font-small',
+      buttonLabel: 'text-xl text-white font-small',
       buttonCentered: '2xl:text-2xl text-xl text-white font-medium 2xl:w-[210.05px] md:w-[179.05px]',
       card: 'text-md bg-gradient-to-r from-goldShadow via-gold to-goldShadow font-mono font-extrabold uppercase w-[25rem] text-center py-2',
       watermark: 'text-md bg-gradient-to-r from-goldShadow via-gold to-goldShadow font-mono font-extrabold uppercase',
       address: 'text-xl text-white font-medium text-left',
       balance: 'font-semibold text-4xl text-dark',
-      transaction: 'text-dark font-semibold text-sm'
+      transaction: 'text-dark font-semibold text-sm m-w-[105.4px] overflow-hidden overflow-x-scroll',
+      order: 'text-lg font-medium text-dark'
       }
     },
     defaultVariants: {
