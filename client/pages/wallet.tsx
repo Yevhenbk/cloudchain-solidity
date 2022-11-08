@@ -16,7 +16,7 @@ const Wallet: NextPage = () => {
   const {  connectedAccount, balance } = React.useContext(Context)
 
   return (
-    <Wrapper isMain={true} intent='transactions'>
+    <Wrapper isMain={true} intent='transactions' id='grid'>
       <Layout title='Digital Wallet | Cloudchain'/>
       <Wrapper isMain={false} intent='section'>
         <Fade top duration={1200}>

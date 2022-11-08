@@ -167,7 +167,7 @@ export const TransactionProvider = (props: Props) => {
 
   return (
     <Context.Provider value={{ connectWallet, connectedAccount, balance,
-    formData, setFormData, sendTransaction, transactions }}>
+    formData, setFormData, sendTransaction, transactions, setTransactions }}>
       {props.children}
     </Context.Provider>
   )
