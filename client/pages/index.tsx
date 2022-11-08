@@ -18,7 +18,7 @@ const Home: NextPage = () =>  {
         <Layout title='Welcome | Cloudchain'/>
       <Wrapper isMain={false} intent='section'>
         <Fade top duration={1200}>
-          <div className='bg-[url(../public/wavesOpacity.svg)] w-[100%] h-[110px] absolute top-0 left-0' />
+          <div className='bg-[url(../public/wavesOpacity.svg)] w-[100%] h-[100px] absolute top-0 left-0' />
         </Fade>
         <Fade right duration={1000}>
           <Text id='b-text' isHeader={true}>Cloudchain</Text>

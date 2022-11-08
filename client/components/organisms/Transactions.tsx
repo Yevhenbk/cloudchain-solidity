@@ -15,7 +15,7 @@ export function Transactions() {
 
   return (
     <div className='flex flex-col justify-center items-center gap-4'>
-      <div className='flex flex-row justify-between items-center w-[560px]'>
+      <div className='flex flex-row justify-between items-center w-[510px]'>
         <div className='flex flex-row justify-between w-[90px] px-2 py-1 items-center rounded-md'>
           <Text isHeader={false} intent='order'>Date</Text>
           <AiOutlineArrowDown />
@@ -31,7 +31,7 @@ export function Transactions() {
         </Search>
       </div>
       <div className='flex flex-col gap-4 h-[383px] px-2 pb-4 overflow-hidden
-      overflow-y-scroll w-[600px]'>
+      overflow-y-scroll w-[550px]'>
         {transactions.reverse().filter((transaction: any) => transaction.addressTo.toLowerCase().includes(query))
         .map((transaction: any, i: any) => (
           <Transaction key={i} {...transaction} />

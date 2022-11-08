@@ -31,7 +31,7 @@ export function Modal() {
   }
 
   return (
-    <form className='w-[450px] h-[450px] bg-white rounded-2xl shadow-lg shadow-gray-300
+    <form className='w-[420px] h-[500px] bg-white rounded-2xl shadow-lg shadow-gray-300
     p-8 flex flex-col justify-between'>
       <div className='flex flex-col text-end'>
         <Text id='b-text' isHeader={true} intent='primaryLabel'>Crypto Transfers</Text>

@@ -20,7 +20,7 @@ const Wallet: NextPage = () => {
       <Layout title='Digital Wallet | Cloudchain'/>
       <Wrapper isMain={false} intent='section'>
         <Fade top duration={1200}>
-          <div className='bg-[url(../public/wavesOpacity.svg)] w-[100%] h-[110px] absolute top-0 left-0' />
+          <div className='bg-[url(../public/wavesOpacity.svg)] w-[100%] h-[100px] absolute top-0 left-0' />
         </Fade>
         <div className='flex flex-col items-start gap-10'>
           <Card address={connectedAccount}/>

@@ -19,7 +19,7 @@ export function Transaction(props: Props) {
 
   return (
     <div className='p-2 grid grid-cols-5 grid-rows-1 items-center rounded-lg bg-white
-    w-[575px] gap-2 shadow-lg shadow-gray-300'>
+    w-[525px] gap-2 shadow-lg shadow-gray-300'>
       <img
         src={gifUrl || props.url}
         alt='nature'
