@@ -21,4 +21,4 @@ npm run dev #runs the app in the development mode
 
 ## Page preview
 
-![Preview image 1](https://github.com/Yevhenbk/kommon-technical-challenge/blob/main/public/img/tech_challenge.png)
+![Preview image 1](https://github.com/Yevhenbk/cloudchain/blob/main/client/static/img/183.png)
