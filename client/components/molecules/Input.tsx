@@ -11,12 +11,12 @@ export function Input({ intent='primary', ...props}: Props) {
   return (
     <IsInput
       className={clsx(
-        'py-2 px-4 bg-input border-[1px] text-dark border-[#e8e7e7] text-lg',
-        {'w-[100%] rounded-md outline-grey':
+        'py-3 px-5 text-dark text-xl font-normal outline-none font-mono',
+        {'w-[100%] rounded-md bg-white border-[#e8e7e7]':
         intent === 'primary',
-        'w-[95%] rounded-md outline-grey':
+        'w-[95%] rounded-md bg-white border-[#e8e7e7]':
         intent === 'secondary',
-        'rounded-full w-[16rem] outline-none border-none':
+        'rounded-md w-[26rem] bg-transparent border-none':
         intent === 'teritary'}
       )} 
     {...props} />   

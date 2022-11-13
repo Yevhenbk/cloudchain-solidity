@@ -12,7 +12,7 @@ export function Label({ intent='primary', ...props }: Props) {
     <IsLabel
       className={clsx(
         'text-dark',
-        {'text-md font-medium':
+        {'text-md font-medium text-xl':
         intent === 'primary',
         'text-lg':
         intent === 'secondary'}

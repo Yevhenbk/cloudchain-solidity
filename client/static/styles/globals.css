@@ -6,7 +6,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  background-color: #EEF2F5;
 }
 
 ::-webkit-scrollbar {
@@ -22,6 +23,10 @@ body {
 
 ::-webkit-scrollbar-thumb:active {
   background-color: grey;
+}
+
+input::placeholder {
+  color: rgb(60, 60, 60);
 }
 
 a {
@@ -43,40 +48,17 @@ a {
 }
 
 #grid {
-  display: flex;
-}
-
-@media (min-width: 1800px) {
-  #grid {
-    --grid-layout-gap: .25rem;
-    --grid-column-count: 3;
-    --grid-item--min-width: 450px;
-    --gap-count: calc(var(--grid-column-count) - 1);
-    --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
-    --grid-item--max-width: 565px;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
-    grid-gap: var(--total-gap-width);
-  }
-}
-
-@media (max-width: 1000px)  {
-  #grid {
-    --grid-layout-gap: 2rem;
-    --grid-column-count: 3;
-    --grid-item--min-width: 450px;
-    --gap-count: calc(var(--grid-column-count) - 1);
-    --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
-    --grid-item--max-width: 565px;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
-    grid-gap: var(--total-gap-width);
-    padding: 8rem 0 5rem;
-  }
+  --grid-layout-gap: .5rem;
+  --grid-column-count: 5;
+  --grid-item--min-width: 250px;
+  --gap-count: calc(var(--grid-column-count) - 1);
+  --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+  --grid-item--max-width: 250px;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
+  grid-gap: var(--total-gap-width);
 }
 
 .loader-wrapper {
@@ -92,13 +74,3 @@ a {
   align-items: center;
   transition: 1s ease;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-} */

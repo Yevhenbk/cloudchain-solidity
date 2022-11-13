@@ -7,7 +7,7 @@ import { Button } from '@molecules/Button'
 import { RiExchangeLine } from 'react-icons/ri'
 import { Footer } from '@organisms/Footer'
 import { Context } from '../store/context'
-import { Header } from '@atoms/Header'
+import { Header } from '@molecules/Header'
 const Fade: any = require('react-reveal/Fade')
 
 const Home: NextPage = () =>  {
