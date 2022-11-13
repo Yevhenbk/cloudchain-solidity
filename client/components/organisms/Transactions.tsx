@@ -38,7 +38,7 @@ export function Transactions() {
           and try it out!</Text>
           <div className='flex flex-row gap-4 items-center'>
             <Text isHeader={false} intent='balanceCard'>Check it out</Text>
-            <FaExternalLinkAlt className='text-xl' />
+            <FaExternalLinkAlt className='text-xl relative -top-[2px]' />
           </div>
         </div>
         {transactions.filter((transaction: any) => transaction.addressTo.toLowerCase().includes(query))
