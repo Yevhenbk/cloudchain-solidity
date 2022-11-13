@@ -32,7 +32,7 @@ export function Transactions() {
       </div>
       <div className='flex flex-col gap-4 h-[383px] px-2 pb-4 overflow-hidden
       overflow-y-scroll w-[550px]'>
-        {transactions.reverse().filter((transaction: any) => transaction.addressTo.toLowerCase().includes(query))
+        {transactions.filter((transaction: any) => transaction.addressTo.toLowerCase().includes(query))
         .map((transaction: any, i: any) => (
           <Transaction key={i} {...transaction} />
         ))}
