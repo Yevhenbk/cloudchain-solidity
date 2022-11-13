@@ -9,6 +9,7 @@ import { FaEthereum } from 'react-icons/fa'
 import { Context } from '../store/context'
 import { Transactions } from '../components/organisms/Transactions'
 import { Modal } from '@organisms/Modal'
+import { Header } from '@atoms/Header'
 const Fade: any = require('react-reveal/Fade')
 
 const Wallet: NextPage = () => {
@@ -18,10 +19,8 @@ const Wallet: NextPage = () => {
   return (
     <Wrapper isMain={true} intent='transactions' id='grid'>
       <Layout title='Digital Wallet | Cloudchain'/>
+      <Header/>
       <Wrapper isMain={false} intent='section'>
-        <Fade top duration={1200}>
-          <div className='bg-[url(../public/wavesOpacity.svg)] w-[100%] h-[100px] absolute top-0 left-0' />
-        </Fade>
         <div className='flex flex-col items-start gap-10'>
           <Card address={connectedAccount}/>
           <div className='flex flex-row align-middle gap-2 relative left-28'>
@@ -40,7 +39,7 @@ const Wallet: NextPage = () => {
           <Modal/>
         </div>
       </Wrapper>
-      <Wrapper isMain={false} intent='section'>
+      {/* <Wrapper isMain={false} intent='section'>
         <div className='flex flex-col justify-center gap-6'>
           <div className='flex flex-col text-center'>
           <Text id='b-text' isHeader={true} intent='primaryLabel'>Latest transactions</Text>
@@ -50,7 +49,7 @@ const Wallet: NextPage = () => {
         </div>
         <Transactions />
         </div>
-      </Wrapper>
+      </Wrapper> */}
       <Footer/>
     </Wrapper>
   )

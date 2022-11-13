@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@metamask/providers": "^10.0.0",
+    "@uiball/loaders": "^1.2.6",
     "class-variance-authority": "^0.2.4",
     "clsx": "^1.2.1",
     "ethers": "^5.7.2",

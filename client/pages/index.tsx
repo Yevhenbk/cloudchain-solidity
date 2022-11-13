@@ -7,6 +7,7 @@ import { Button } from '@molecules/Button'
 import { RiExchangeLine } from 'react-icons/ri'
 import { Footer } from '@organisms/Footer'
 import { Context } from '../store/context'
+import { Header } from '@atoms/Header'
 const Fade: any = require('react-reveal/Fade')
 
 const Home: NextPage = () =>  {
@@ -15,11 +16,9 @@ const Home: NextPage = () =>  {
 
   return (
     <Wrapper isMain={true}>
-        <Layout title='Welcome | Cloudchain'/>
+      <Layout title='Welcome | Cloudchain'/>
+      <Header />
       <Wrapper isMain={false} intent='section'>
-        <Fade top duration={1200}>
-          <div className='bg-[url(../public/wavesOpacity.svg)] w-[100%] h-[100px] absolute top-0 left-0' />
-        </Fade>
         <Fade right duration={1000}>
           <Text id='b-text' isHeader={true}>Cloudchain</Text>
         </Fade>
