@@ -15,7 +15,7 @@ export function Wrapper({ intent='main', ...props }: Props) {
         intent === 'main',
         'flex-col justify-start items-center max-w-[645px] 2xl:max-w-[800px]':
         intent === 'section',
-        'w-[100vw] h-[100%] flex-col justify-center gap-24 items-center mt-40':
+        'w-[100vw] h-[100%] flex-col justify-center gap-24 items-center mt-32':
         intent === 'transactions',
         'w-[100vw] h-[100%] flex-row justify-center gap-24 items-center':
         intent === 'sector',
