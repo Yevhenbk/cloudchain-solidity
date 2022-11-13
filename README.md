@@ -21,7 +21,7 @@ npm run dev #runs the app in the development mode
 
 ## Project preview
 
-![Preview image 1](https://github.com/Yevhenbk/cloudchain/blob/main/client/static/img/183.png)
 ![Preview image 1](https://github.com/Yevhenbk/cloudchain/blob/main/client/static/img/image%20(9).png)
 ![Preview image 1](https://github.com/Yevhenbk/cloudchain/blob/main/client/static/img/image%20(7).png)
 ![Preview image 1](https://github.com/Yevhenbk/cloudchain/blob/main/client/static/img/image%20(8).png)
+![Preview image 1](https://github.com/Yevhenbk/cloudchain/blob/main/client/static/img/183.png)
