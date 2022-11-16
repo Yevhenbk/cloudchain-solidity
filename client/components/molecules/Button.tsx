@@ -17,7 +17,7 @@ export function Button({ intent='primary', ...props }: Props) {
         intent === 'secondary',
         '2xl:w-80 w-72 h-16 border-2 rounded-full bg-gradient-to-l justify-center from-[#D17F82] to-[#5A3BF8] hover:bg-gradient-to-l hover:from-[#D17F82] hover:to-[#9B60B8]':
         intent === 'teritary',
-        'w-[300px] h-12 rounded-full bg-dark justify-center hover:bg-gradient-to-l hover:bg-black':
+        'w-[300px] h-12 rounded-full bg-gradient-to-l from-[#D17F82] to-[#5A3BF8] justify-center hover:bg-gradient-to-l hover:from-[#D17F82] hover:to-[#9B60B8]':
         intent === 'quaternary'}
       )} 
     {...props} />

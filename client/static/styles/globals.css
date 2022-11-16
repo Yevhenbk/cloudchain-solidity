@@ -25,9 +25,9 @@ body {
   background-color: grey;
 }
 
-input::placeholder {
+/* input::placeholder {
   color: rgb(60, 60, 60);
-}
+} */
 
 a {
   color: inherit;

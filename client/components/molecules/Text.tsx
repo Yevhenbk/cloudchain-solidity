@@ -6,7 +6,7 @@ const textStyles = cva(
   {variants: {
     intent: {
       primary: '2xl:text-9xl md:text-8xl text-5xl font-extrabold text-headerWhite uppercase bg-gradient-to-r from-[#D17F82] via-[#5A3BF8] to-[#1D1D29] opacity-60',
-      primaryLabel: 'text-3xl font-extrabold text-headerWhite uppercase bg-dark',
+      primaryLabel: 'text-3xl font-extrabold bg-gradient-to-r from-[#D17F82] via-[#5A3BF8] to-[#1D1D29] uppercase bg-dark',
       secondary: '2xl:text-5xl md:text-4xl text-2xl text-transparent font-extrabold',
       secondaryLabel: 'text-2xl text-dark font-bold h-4',
       teritary: '2xl:text-4xl text-center font-semibold text-3xl text-dark',
@@ -16,8 +16,8 @@ const textStyles = cva(
       button: '2xl:text-2xl text-xl text-white font-medium pl-6 2xl:w-[210.05px] md:w-[179.05px]',
       buttonLabel: 'text-2xl text-white font-small',
       buttonCentered: '2xl:text-2xl text-xl text-white font-medium 2xl:w-[210.05px] md:w-[179.05px]',
-      card: 'text-md bg-gradient-to-r from-goldShadow via-gold to-goldShadow font-mono font-extrabold uppercase w-[25rem] text-center py-2',
-      watermark: 'text-md bg-gradient-to-r from-goldShadow via-gold to-goldShadow font-mono font-extrabold uppercase',
+      card: 'text-md bg-[#E8D96B] font-mono font-extrabold uppercase w-[25rem] text-center py-2',
+      watermark: 'text-md bg-[#E8D96B] font-mono font-extrabold uppercase',
       address: 'text-xl text-white font-medium text-left',
       balance: 'font-semibold font-mono text-3xl text-dark',
       transaction: 'text-dark font-semibold text-sm m-w-[105.4px] overflow-hidden overflow-x-scroll',

@@ -16,11 +16,11 @@ export function Transactions() {
 
   return (
     <div className='flex flex-col justify-center items-center gap-10'>
-      <div className='flex flex-row justify-between items-center w-[80vw]'>
-        <div className='flex flex-row justify-between w-[90px] px-2 py-1 items-center rounded-md'>
+      <div className='flex flex-row justify-center items-end w-[80vw]'>
+        {/* <div className='flex flex-row justify-between w-[90px] px-2 py-1 items-center rounded-md'>
           <Text isHeader={false} intent='order'>Date</Text>
           <AiOutlineArrowDown />
-        </div>
+        </div> */}
         <Search type='text' onChange={(e: Event & {
           target: HTMLInputElement
         }) => setQuery(e.target.value.toLowerCase())}
@@ -31,8 +31,8 @@ export function Transactions() {
           </span>
         </Search>
       </div>
-      <div id='grid' className='w-[90vw]'>
-        <div className='flex flex-col justify-between w-[250px] h-[370px] rounded-xl bg-[#DEFF96] p-4 gap-3'>
+      <div id='grid' className='w-[90vw] pb-28'>
+        <div className='flex flex-col justify-between w-[250px] h-[370px] rounded-xl bg-[#ffd1f3] p-4 gap-3'>
           <Text isHeader={false} intent='secondaryLabel'>Your transactions</Text>
           <Text isHeader={false} intent='serviceLabel'>All of your transactions history will be displayed here. Head up to the modal
           and try it out!</Text>
@@ -45,9 +45,6 @@ export function Transactions() {
         .map((transaction: any, i: any) => (
           <Transaction key={i} {...transaction} />
         ))}
-      </div>
-      <div className='flex flex-row justify-center'>
-        <BsChevronCompactDown id='anim' className='relative -top-[1rem] text-[2rem] text-[#656565]' />
       </div>
     </div>
   )
