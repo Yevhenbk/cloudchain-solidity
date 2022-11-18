@@ -13,9 +13,9 @@ export function Service({ intent='primary', ...props }: Props) {
   return (
     <div className={clsx(
       'flex flex-col justify-between w-[350px] h-[160px] rounded-lg p-4',
-      {'bg-transparent border-2 border-[#e1e1e1]':
+      {'bg-transparent border-2 border-cardBorder':
       intent === 'primary',
-      'bg-[#D1D1FF]':
+      'bg-purple':
       intent === 'secondary'} 
     )}>
       {props.children}  

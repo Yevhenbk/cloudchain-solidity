@@ -8,8 +8,8 @@ interface Props
 
 export function Search({...props}: Props) {
   return (
-    <div className='flex flex-row justify-between items-center bg-[#f8f8f8]
-    rounded-full border-[#e8e7e7] border-2 w-[28rem]'>
+    <div className='flex flex-row justify-between items-center bg-input
+    rounded-full border-border border-2 w-[28rem]'>
       <Input intent='secondary' placeholder='Search by address...' {...props} />
       {props.children}
     </div>

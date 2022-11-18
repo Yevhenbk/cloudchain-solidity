@@ -27,7 +27,7 @@ export function Transactions() {
         </Search>
       </div>
       <div id='grid' className='w-[90vw] pb-28'>
-        <div className='flex flex-col justify-between w-[250px] h-[370px] rounded-xl bg-[#ffd1f3] 
+        <div className='flex flex-col justify-between w-[250px] h-[370px] rounded-xl bg-pink
         p-4 gap-3'>
           <Text isHeader={false} intent='teritary' size='medium' color='dark'>
             Your transactions

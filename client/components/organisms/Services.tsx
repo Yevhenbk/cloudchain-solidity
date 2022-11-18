@@ -9,7 +9,7 @@ export function Services() {
     <div className='flex flex-col justify-between h-[500px] w-[350px]'>
       <Service>
         <div className='flex flex-row items-center gap-2'>
-          <MdOutlineSecurity className='text-[2.25rem] p-2 rounded-full text-white bg-[#2D51E3]' />  
+          <MdOutlineSecurity className='text-[2.25rem] p-2 rounded-full text-white bg-blue' />  
           <Text isHeader={false} intent='base' size='regular' color='dark'>
             Security guarantee
           </Text>
@@ -20,7 +20,7 @@ export function Services() {
       </Service>  
       <Service>
         <div className='flex flex-row items-center gap-2'>
-          <MdSearch className='text-[2.25rem] p-2 rounded-full text-white bg-[#E44050]' />  
+          <MdSearch className='text-[2.25rem] p-2 rounded-full text-white bg-red' />  
           <Text isHeader={false} intent='base' size='regular' color='dark'>
             Best exchange rates
           </Text>

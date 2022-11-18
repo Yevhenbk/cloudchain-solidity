@@ -12,7 +12,7 @@ export function Card(props: Props) {
     rounded-xl flex flex-col items-center justify-center object-cover z-50
     bg-no-repeat bg-center shadow-sm shadow-gray-400'>
       <div className='flex flex-row relative -top-16 -left-20 items-center gap-2'>
-        <IoMdCloudy className='text-4xl text-[rgba(29, 29, 41, 1)] bg-[#E8D96B] rounded-full p-1'/>
+        <IoMdCloudy className='text-4xl text-dark bg-yellow rounded-full p-1'/>
         <Text id='b-text' isHeader={false} intent='nonary' color='yellow' size='small'>
           Cloudchain digital
         </Text>

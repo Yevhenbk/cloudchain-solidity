@@ -18,11 +18,11 @@ export function Footer() {
           <div className='flex flex-row gap-2'>
             <Button isButton={false} link='https://github.com/Yevhenbk' intent='secondary'
             color='transparent'>
-              <AiFillGithub className='text-secondary hover:text-[#5A3BF8] 2xl:text-2xl' />
+              <AiFillGithub className='text-secondary hover:text-blue 2xl:text-2xl' />
             </Button> 
             <Button isButton={false} link='https://www.linkedin.com/in/yevhen-balahutrak/' 
             intent='secondary' color='transparent'>
-              <AiFillLinkedin className='text-secondary hover:text-[#5A3BF8] 2xl:text-2xl' />
+              <AiFillLinkedin className='text-secondary hover:text-blue 2xl:text-2xl' />
             </Button> 
           </div>
         </section>

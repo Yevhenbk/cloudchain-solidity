@@ -33,10 +33,10 @@ const textStyles = cva(
       color: {
         dark: 'text-dark',
         bright: 'text-white',
-        yellow: 'bg-[#E8D96B] text-dark',
+        yellow: 'bg-yellow text-dark',
         white: 'text-secondary',
         transparent: 'text-transparent',
-        gradient: 'bg-gradient-to-r from-[#D17F82] via-[#5A3BF8] to-[#1D1D29]'
+        gradient: 'bg-gradient-to-r from-peach via-blue to-dark'
       },
       style: {
         regular: 'not-italic',

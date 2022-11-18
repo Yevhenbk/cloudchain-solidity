@@ -13,7 +13,7 @@ export function Input({ intent='primary', size='big', ...props}: Props) {
       className={clsx(
         ['py-3 px-4'], ['text-dark'], ['text-xl'], ['font-normal'],
         ['outline-none'], ['font-mono'], ['rounded-md'],
-        {'bg-[#f8f8f8] border-2 border-[#e8e7e7]':
+        {'bg-input border-2 border-border':
         intent === 'primary',
         'w-[26rem] bg-transparent border-none':
         intent === 'secondary',
