@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Text } from './Text'
 import { IoMdCloudy } from 'react-icons/io'
 
@@ -14,10 +13,14 @@ export function Card(props: Props) {
     bg-no-repeat bg-center shadow-sm shadow-gray-400'>
       <div className='flex flex-row relative -top-16 -left-20 items-center gap-2'>
         <IoMdCloudy className='text-4xl text-[rgba(29, 29, 41, 1)] bg-[#E8D96B] rounded-full p-1'/>
-        <Text id='b-text' isHeader={false} intent='watermark'>Cloudchain digital</Text>
+        <Text id='b-text' isHeader={false} intent='nonary' color='yellow' size='small'>
+          Cloudchain digital
+        </Text>
       </div>
       <section className='relative -bottom-12'>
-        <Text isHeader={false} intent='card'>{props.address}</Text>
+        <Text isHeader={false} intent='octonary' color='yellow' size='small'>
+          {props.address}
+        </Text>
       </section>  
     </div>
   )

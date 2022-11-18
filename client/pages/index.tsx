@@ -20,19 +20,26 @@ const Home: NextPage = () =>  {
       <Header />
       <Wrapper isMain={false} intent='section'>
         <Fade right duration={1000}>
-          <Text id='b-text' isHeader={true}>Cloudchain</Text>
+          <Text id='b-text' isHeader={true} intent='primary' color='gradient'
+          size='extrabig'>Cloudchain</Text>
         </Fade>
         <Fade left duration={1000}>
           <div className='relative h-4 -top:-12 left:-36 md:-top-8 md:-left-36 2xl:-top-12 2xl:-left-52'>
-            <Text id='t-stroke' isHeader={true} intent='secondary'>Welcome to</Text>
+            <Text id='t-stroke' isHeader={true} intent='secondary' color='transparent'
+            size='header'>Welcome to</Text>
           </div>
         </Fade>
         <Fade duration={2000}>
-        <Text isHeader={false} intent='teritary'>Simply and securely transition crypto assets in two easy steps</Text>
+          <Text isHeader={false} intent='centered' color='dark' size='big'>
+            Simply and securely transition crypto assets in two easy steps
+          </Text>
           <div className='mt-6'>
             <Button isButton={true} onClick={connectedAccount !== '' ? connectWallet : () => location.replace('/wallet')}
              intent={!connectedAccount ? 'primary' : 'teritary'}>
-              <Text isHeader={false} intent={!connectedAccount ? 'button' : 'buttonCentered'}>{connectedAccount ? 'My Wallet' : 'Connect Wallet'}</Text>
+              <Text isHeader={false} intent={!connectedAccount ? 'quinary' : 'septenary'}
+              color='bright' size='medium'>
+                {connectedAccount ? 'My Wallet' : 'Connect Wallet'}
+              </Text>
               {!connectedAccount ?
                 <span className='bg-white rounded-full w-[48px] h-[48px] flex justify-center items-center
                 relative -right-6'>

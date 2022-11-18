@@ -1,6 +1,4 @@
-import * as React from 'react'
 const Fade: any = require('react-reveal/Fade')
-
 
 export function Header() {
   return (

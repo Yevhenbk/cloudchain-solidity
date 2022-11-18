@@ -21,8 +21,6 @@ export function Modal() {
 
     e.preventDefault()
 
-    console.log(formData)
-
     if(!addressTo || !amount || !keyword || !message) {
       return console.log('missing props')
     } else {
@@ -34,9 +32,13 @@ export function Modal() {
     <form className='w-[500px] h-[500px] bg-white border-grey rounded-2xl
     p-8 flex flex-col justify-between shadow-sm'>
       <div className='flex flex-col text-end'>
-        <Text id='b-text' isHeader={true} intent='primaryLabel'>Crypto Transfers</Text>
+        <Text id='b-text' isHeader={true} intent='label' color='gradient' size='big'>
+          Crypto Transfers
+        </Text>
         <div className='relative -top-2'>
-          <Text isHeader={true} intent='secondaryLabel'>across the world</Text> 
+          <Text isHeader={true} intent='teritary' size='medium' color='dark'>
+            across the world
+          </Text> 
         </div>
       </div>
       <div className='flex flex-col justify-center gap-4'>
@@ -50,14 +52,14 @@ export function Modal() {
         <div className='flex flex-row justify-between'>
           <div className='flex flex-col justify-start gap-1'>
             <Label for='amount'>Amount (ETH)</Label>
-            <Input intent='secondary' type='number' id='amount' placeholder='0.00'
+            <Input size='small' type='number' id='amount' placeholder='0.00'
             onChange={(e: Event & {
               target: HTMLInputElement
             }) => setFormData({...formData, amount: e.target.value})} />
           </div>
           <div className='flex flex-col justify-start gap-1 relative -right-[2.5%]'>
             <Label for='keyword'>Keyword</Label>
-            <Input intent='secondary' type='text' id='keyword' placeholder='Gif name'
+            <Input size='small' type='text' id='keyword' placeholder='Gif name'
             onChange={(e: Event & {
               target: HTMLInputElement
             }) => setFormData({...formData, keyword: e.target.value})} />
@@ -74,7 +76,9 @@ export function Modal() {
       <div className='flex flex-col items-end'>
         <Button isButton={true} intent='quaternary'
         onClick={handleSubmit}>
-          <Text isHeader={false} intent='buttonLabel'>Submit</Text>
+          <Text isHeader={false} intent='senary' size='large' color='bright'>
+            Submit
+          </Text>
         </Button>
       </div>
     </form>

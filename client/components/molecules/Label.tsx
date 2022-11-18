@@ -1,4 +1,3 @@
-import * as React from 'react'
 import clsx from 'clsx'
 import { IsLabel, Props as IsLabelProps } from '@atoms/IsLabel'
 
