@@ -8,6 +8,7 @@ import type { TransactionInput } from '../../../lib/types/blockchain'
 import { TransactionList } from './TransactionList'
 import { WalletInfo } from './WalletInfo'
 import { ErrorBoundary } from './ErrorBoundary'
+import { GifDisplay } from './GifDisplay'
 
 export function WalletClient() {
   const { wallet, loading: walletLoading, connectWallet, refreshBalance } = useWallet()
@@ -165,20 +166,35 @@ export function WalletClient() {
                 <label htmlFor="keyword" className="block text-sm font-medium text-gray-700 mb-1">
                   Keyword
                 </label>
-                <input
-                  type="text"
-                  id="keyword"
-                  name="keyword"
-                  value={formData.keyword}
-                  onChange={handleInputChange}
-                  placeholder="e.g., Payment"
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                    formErrors.keyword ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                />
-                {formErrors.keyword && (
-                  <p className="text-red-500 text-sm mt-1">{formErrors.keyword}</p>
-                )}
+                <div className="flex gap-3">
+                  <div className="flex-1">
+                    <input
+                      type="text"
+                      id="keyword"
+                      name="keyword"
+                      value={formData.keyword}
+                      onChange={handleInputChange}
+                      placeholder="e.g., Payment, Happy, Cat"
+                      className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                        formErrors.keyword ? 'border-red-500' : 'border-gray-300'
+                      }`}
+                    />
+                    {formErrors.keyword && (
+                      <p className="text-red-500 text-sm mt-1">{formErrors.keyword}</p>
+                    )}
+                  </div>
+                  {formData.keyword && (
+                    <div className="flex-shrink-0">
+                      <GifDisplay 
+                        keyword={formData.keyword} 
+                        size="small"
+                        showKeyword={false}
+                        fallbackText="Preview"
+                        debounced={true}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div>

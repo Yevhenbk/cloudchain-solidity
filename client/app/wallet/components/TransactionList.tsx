@@ -3,6 +3,7 @@
 import type { FormattedTransaction, LoadingState } from '../../../lib/types/blockchain'
 import { shortenAddress } from '../../../lib/utils/blockchain'
 import { FaSync } from 'react-icons/fa'
+import { GifDisplay, InlineGif } from './GifDisplay'
 
 interface TransactionListProps {
   transactions: FormattedTransaction[]
@@ -72,33 +73,39 @@ function TransactionCard({ transaction }: { transaction: FormattedTransaction })
         </span>
       </div>
 
-      <div className="space-y-2 text-sm">
-        <div className="flex justify-between">
-          <span className="text-gray-600">From:</span>
-          <code className="text-gray-900 font-mono">
-            {shortenAddress(transaction.addressFrom)}
-          </code>
-        </div>
-        
-        <div className="flex justify-between">
-          <span className="text-gray-600">To:</span>
-          <code className="text-gray-900 font-mono">
-            {shortenAddress(transaction.addressTo)}
-          </code>
-        </div>
-
-        {transaction.message && (
-          <div className="pt-2 border-t">
-            <span className="text-gray-600">Message:</span>
-            <p className="text-gray-900 italic mt-1">{transaction.message}</p>
+      <div className="flex gap-4">
+        {/* Transaction Details */}
+        <div className="flex-1 space-y-2 text-sm">
+          <div className="flex justify-between">
+            <span className="text-gray-600">From:</span>
+            <code className="text-gray-900 font-mono">
+              {shortenAddress(transaction.addressFrom)}
+            </code>
           </div>
-        )}
+          
+          <div className="flex justify-between">
+            <span className="text-gray-600">To:</span>
+            <code className="text-gray-900 font-mono">
+              {shortenAddress(transaction.addressTo)}
+            </code>
+          </div>
 
+          {transaction.message && (
+            <div className="pt-2 border-t">
+              <span className="text-gray-600">Message:</span>
+              <p className="text-gray-900 italic mt-1">{transaction.message}</p>
+            </div>
+          )}
+        </div>
+
+        {/* GIF Display */}
         {transaction.keyword && (
-          <div className="pt-2">
-            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-              {transaction.keyword}
-            </span>
+          <div className="flex-shrink-0">
+            <GifDisplay 
+              keyword={transaction.keyword} 
+              size="medium"
+              className="max-w-24"
+            />
           </div>
         )}
       </div>
