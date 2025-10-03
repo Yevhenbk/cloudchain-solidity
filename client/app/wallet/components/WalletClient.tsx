@@ -85,44 +85,51 @@ export function WalletClient() {
 
   if (!wallet.isConnected) {
     return (
-      <div className="text-center py-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Connect Your Wallet</h2>
-        <p className="text-gray-600 mb-8">
-          Connect your MetaMask wallet to start sending transactions
-        </p>
-        <button
-          onClick={connectWallet}
-          disabled={walletLoading.isLoading}
-          className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white px-8 py-3 rounded-lg font-medium transition-colors"
-        >
-          {walletLoading.isLoading ? 'Connecting...' : 'Connect Wallet'}
-        </button>
-        {walletLoading.error && (
-          <div className="error mt-4">
-            {walletLoading.error}
+      <div className="flex items-center justify-center py-16">
+        <div className="text-center space-y-6 max-w-md">
+          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto">
+            <span className="text-2xl">🔗</span>
           </div>
-        )}
+          <div className="space-y-2">
+            <h2 className="text-2xl font-light text-gray-900">Connect Your Wallet</h2>
+            <p className="text-gray-600">
+              Connect your MetaMask wallet to start sending transactions
+            </p>
+          </div>
+          <button
+            onClick={connectWallet}
+            disabled={walletLoading.isLoading}
+            className="bg-gray-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {walletLoading.isLoading ? 'Connecting...' : 'Connect Wallet'}
+          </button>
+          {walletLoading.error && (
+            <div className="text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm">
+              {walletLoading.error}
+            </div>
+          )}
+        </div>
       </div>
     )
   }
 
   return (
     <ErrorBoundary>
-      <div className="max-w-4xl mx-auto">
+      <div className="space-y-8">
         <WalletInfo 
           wallet={wallet} 
           onRefresh={refreshBalance}
           loading={walletLoading.isLoading}
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Transaction Form */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Send Transaction</h2>
+          <div className="bg-white border border-gray-100 rounded-lg p-6">
+            <h2 className="text-lg font-medium text-gray-900 mb-6">Send Transaction</h2>
             
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="addressTo" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="addressTo" className="block text-sm font-medium text-gray-700 mb-2">
                   Recipient Address
                 </label>
                 <input
@@ -132,17 +139,17 @@ export function WalletClient() {
                   value={formData.addressTo}
                   onChange={handleInputChange}
                   placeholder="0x..."
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                    formErrors.addressTo ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-gray-400 focus:border-gray-400 ${
+                    formErrors.addressTo ? 'border-red-300' : 'border-gray-200'
                   }`}
                 />
                 {formErrors.addressTo && (
-                  <p className="text-red-500 text-sm mt-1">{formErrors.addressTo}</p>
+                  <p className="text-red-600 text-sm mt-1">{formErrors.addressTo}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-2">
                   Amount (ETH)
                 </label>
                 <input
@@ -153,17 +160,17 @@ export function WalletClient() {
                   onChange={handleInputChange}
                   placeholder="0.001"
                   step="0.000001"
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                    formErrors.amount ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-gray-400 focus:border-gray-400 ${
+                    formErrors.amount ? 'border-red-300' : 'border-gray-200'
                   }`}
                 />
                 {formErrors.amount && (
-                  <p className="text-red-500 text-sm mt-1">{formErrors.amount}</p>
+                  <p className="text-red-600 text-sm mt-1">{formErrors.amount}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="keyword" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="keyword" className="block text-sm font-medium text-gray-700 mb-2">
                   Keyword
                 </label>
                 <div className="flex gap-3">
@@ -175,12 +182,12 @@ export function WalletClient() {
                       value={formData.keyword}
                       onChange={handleInputChange}
                       placeholder="e.g., Payment, Happy, Cat"
-                      className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                        formErrors.keyword ? 'border-red-500' : 'border-gray-300'
+                      className={`w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-gray-400 focus:border-gray-400 ${
+                        formErrors.keyword ? 'border-red-300' : 'border-gray-200'
                       }`}
                     />
                     {formErrors.keyword && (
-                      <p className="text-red-500 text-sm mt-1">{formErrors.keyword}</p>
+                      <p className="text-red-600 text-sm mt-1">{formErrors.keyword}</p>
                     )}
                   </div>
                   {formData.keyword && (
@@ -198,7 +205,7 @@ export function WalletClient() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                   Message
                 </label>
                 <textarea
@@ -208,19 +215,19 @@ export function WalletClient() {
                   onChange={handleInputChange}
                   placeholder="Optional message..."
                   rows={3}
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                    formErrors.message ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-gray-400 focus:border-gray-400 ${
+                    formErrors.message ? 'border-red-300' : 'border-gray-200'
                   }`}
                 />
                 {formErrors.message && (
-                  <p className="text-red-500 text-sm mt-1">{formErrors.message}</p>
+                  <p className="text-red-600 text-sm mt-1">{formErrors.message}</p>
                 )}
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting || transactionLoading.isLoading}
-                className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white py-3 rounded-lg font-medium transition-colors"
+                className="w-full bg-gray-900 hover:bg-gray-800 disabled:opacity-50 text-white py-3 rounded-lg font-medium transition-colors duration-200"
               >
                 {isSubmitting ? 'Sending...' : 'Send Transaction'}
               </button>
@@ -228,7 +235,7 @@ export function WalletClient() {
           </div>
 
           {/* Transaction List */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
+          <div className="bg-white border border-gray-100 rounded-lg p-6">
             <TransactionList
               transactions={transactions}
               loading={transactionLoading}

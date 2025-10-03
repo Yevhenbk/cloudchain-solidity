@@ -39,8 +39,8 @@ export function GifDisplay({
   if (loading) {
     return (
       <div className={`flex flex-col items-center space-y-2 ${containerClasses[size]} ${className}`}>
-        <div className={`${sizeClasses[size]} bg-gray-200 rounded-lg animate-pulse flex items-center justify-center`}>
-          <div className="w-8 h-8 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
+        <div className={`${sizeClasses[size]} bg-gray-100 rounded-lg flex items-center justify-center`}>
+          <div className="w-6 h-6 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin"></div>
         </div>
         {showKeyword && (
           <span className="text-gray-600 truncate max-w-full">{keyword}</span>
@@ -52,8 +52,8 @@ export function GifDisplay({
   if (error || !gif || imageError) {
     return (
       <div className={`flex flex-col items-center space-y-2 ${containerClasses[size]} ${className}`}>
-        <div className={`${sizeClasses[size]} bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center border-2 border-blue-300`}>
-          <span className="text-blue-800 font-bold text-lg">
+        <div className={`${sizeClasses[size]} bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200`}>
+          <span className="text-gray-600 font-medium text-lg">
             {keyword.charAt(0).toUpperCase()}
           </span>
         </div>
@@ -68,7 +68,7 @@ export function GifDisplay({
 
   return (
     <div className={`flex flex-col items-center space-y-2 ${containerClasses[size]} ${className}`}>
-      <div className={`${sizeClasses[size]} rounded-lg overflow-hidden border-2 border-gray-200 shadow-sm`}>
+      <div className={`${sizeClasses[size]} rounded-lg overflow-hidden border border-gray-200`}>
         <img
           src={gif.images.fixed_height.url}
           alt={gif.title || keyword}
@@ -93,13 +93,13 @@ export function InlineGif({ keyword, className = '' }: { keyword: string; classN
 
   if (loading) {
     return (
-      <div className={`inline-block w-6 h-6 bg-gray-200 rounded animate-pulse ${className}`} />
+      <div className={`inline-block w-6 h-6 bg-gray-100 rounded ${className}`} />
     )
   }
 
   if (!gif || imageError) {
     return (
-      <span className={`inline-flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-800 text-xs font-bold rounded ${className}`}>
+      <span className={`inline-flex items-center justify-center w-6 h-6 bg-gray-100 text-gray-600 text-xs font-medium rounded border border-gray-200 ${className}`}>
         {keyword.charAt(0).toUpperCase()}
       </span>
     )
@@ -109,7 +109,7 @@ export function InlineGif({ keyword, className = '' }: { keyword: string; classN
     <img
       src={gif.images.fixed_width_small.url}
       alt={keyword}
-      className={`inline-block w-6 h-6 rounded object-cover ${className}`}
+      className={`inline-block w-6 h-6 rounded object-cover border border-gray-200 ${className}`}
       onError={() => setImageError(true)}
       loading="lazy"
     />

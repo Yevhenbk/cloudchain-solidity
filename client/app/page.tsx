@@ -3,84 +3,76 @@ import { FaEthereum } from 'react-icons/fa'
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center space-x-2">
-              <FaEthereum className="h-8 w-8 text-blue-600" />
-              <h1 className="text-2xl font-bold text-gray-900">Cloudchain</h1>
-            </div>
-            <nav>
-              <Link 
-                href="/wallet"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
-              >
-                Open Wallet
-              </Link>
-            </nav>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-6 py-6">
+          <div className="flex items-center space-x-3">
+            <FaEthereum className="h-8 w-8 text-gray-900" />
+            <h1 className="text-2xl font-semibold text-gray-900">Cloudchain</h1>
           </div>
         </div>
       </header>
 
-      <main className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8">
-            <FaEthereum className="h-24 w-24 text-blue-600 mx-auto mb-6" />
-            <h2 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
-              Digital Wallet
+      {/* Main Content */}
+      <main className="max-w-4xl mx-auto px-6 py-16">
+        <div className="text-center space-y-8">
+          <div className="space-y-4">
+            <h2 className="text-5xl font-light text-gray-900">
+              Modern Crypto
+              <br />
+              <span className="font-normal">Transactions</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Send and receive Ethereum transactions securely on the Sepolia testnet. 
-              Modern, fast, and built with the latest web technologies.
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Send Ethereum transactions with messages and GIFs on Sepolia testnet. 
+              Clean, simple, and secure.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white p-6 rounded-lg shadow-sm border">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Secure</h3>
-              <p className="text-gray-600">
-                Your private keys never leave your browser. MetaMask integration ensures maximum security.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Fast</h3>
-              <p className="text-gray-600">
-                Built with Next.js 15 and modern React patterns for lightning-fast performance.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Modern</h3>
-              <p className="text-gray-600">
-                Clean UI, TypeScript safety, and cutting-edge blockchain technology.
-              </p>
-            </div>
-          </div>
-
-          <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+          <div className="pt-8">
             <Link
               href="/wallet"
-              className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors inline-block"
+              className="inline-flex items-center bg-gray-900 text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
             >
-              Get Started
+              Open Wallet
             </Link>
-            <a
-              href="https://sepolia.etherscan.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-gray-100 hover:bg-gray-200 text-gray-900 px-8 py-3 rounded-lg font-medium transition-colors inline-block"
-            >
-              View on Etherscan
-            </a>
+          </div>
+
+          {/* Features */}
+          <div className="pt-16 grid md:grid-cols-3 gap-8 text-left">
+            <div className="space-y-3">
+              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                <FaEthereum className="h-6 w-6 text-gray-600" />
+              </div>
+              <h3 className="text-lg font-medium text-gray-900">MetaMask Integration</h3>
+              <p className="text-gray-600">Seamless wallet connection with MetaMask for secure transactions.</p>
+            </div>
+            
+            <div className="space-y-3">
+              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                <span className="text-gray-600 font-semibold text-lg">🎬</span>
+              </div>
+              <h3 className="text-lg font-medium text-gray-900">Visual Transactions</h3>
+              <p className="text-gray-600">Add keywords to your transactions and see them come alive with GIFs.</p>
+            </div>
+            
+            <div className="space-y-3">
+              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                <span className="text-gray-600 font-semibold text-lg">⚡</span>
+              </div>
+              <h3 className="text-lg font-medium text-gray-900">Modern Tech</h3>
+              <p className="text-gray-600">Built with Next.js 15, TypeScript, and deployed on Sepolia testnet.</p>
+            </div>
           </div>
         </div>
       </main>
 
-      <footer className="bg-white border-t">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <p className="text-center text-gray-600">
-            &copy; 2025 Cloudchain. All rights reserved. Built with Next.js 15 & Ethereum.
-          </p>
+      {/* Footer */}
+      <footer className="border-t border-gray-100 mt-16">
+        <div className="max-w-6xl mx-auto px-6 py-8">
+          <div className="text-center text-gray-500">
+            <p>&copy; 2025 Cloudchain. Built with modern web technologies.</p>
+          </div>
         </div>
       </footer>
     </div>
