@@ -1,70 +1,103 @@
-import * as React from 'react'
-import { NextPage } from 'next'
-import Layout from '../components/Layout'
-import { Footer } from '@organisms/Footer'
-import { Card } from '@molecules/Card'
-import { Text } from '@molecules/Text'
-import { Wrapper } from '@molecules/Wrapper'
-import { FaEthereum } from 'react-icons/fa'
-import { Context } from '../store/context'
-import { Transactions } from '../components/organisms/Transactions'
-import { Modal } from '@organisms/Modal'
-import { Header } from '@molecules/Header'
-import { Services } from '@organisms/Services'
-const Fade: any = require('react-reveal/Fade')
+import React from 'react';
+import { NextPage } from 'next';
+import Head from 'next/head';
+import { FaEthereum } from 'react-icons/fa';
+import { Context } from '../store/context';
+import { Card } from '../components/Card';
+import { Transaction } from '../components/Transaction';
+import { Input } from '../components/Input';
+import { Button } from '../components/Button';
 
 const Wallet: NextPage = () => {
+  const { connectedAccount, balance, formData, setFormData, sendTransaction, transactions } = React.useContext(Context);
 
-  const {  connectedAccount, balance } = React.useContext(Context)
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSendTransaction = async () => {
+    if (formData.addressTo && formData.amount) {
+      await sendTransaction();
+    }
+  };
 
   return (
-    <Wrapper isMain={true} intent='transactions'>
-      <Layout title='Digital Wallet | Cloudchain'/>
-      <Header/>
-      <Fade>
-        <Wrapper isMain={false} intent='sector'>  
-          <Wrapper isMain={false} intent='section'>
-            <div className='flex flex-col items-start gap-10'>
-              <Card address={connectedAccount}/>
-              <div className='flex flex-row align-middle gap-2 relative left-28'>
-                <span className='h-[.35rem] w-12 bg-dark rounded-full'/>
-                <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>
-                <span className='h-[.35rem] w-[.35rem] bg-dark rounded-full'/>
-              </div>
-              <div className='flex flex-row justify-start items-center gap-1'>
-                <FaEthereum className='font-semibold text-5xl text-dark relative -top-1' />
-                <Text isHeader={false} intent='denary' color='dark' size='big'>
-                  {balance}
-                </Text>
-              </div>
-            </div>
-          </Wrapper>
-          <Services />
-          <Wrapper isMain={false} intent='section'>
-            <div className='flex flex-col gap-5 items-end'>
-              <Modal/>
-            </div>
-          </Wrapper>
-        </Wrapper>
-        <Wrapper isMain={false} intent='cards'>
-          <div className='flex flex-col justify-center gap-6'>
-            <div className='flex flex-col text-center'>
-            <Text id='b-text' isHeader={true} intent='label' color='gradient' size='big'>
-              Latest transactions
-            </Text>
-            <div className='relative -top-2'>
-              <Text isHeader={true} intent='teritary' size='medium' color='dark'>
-                all under one roof
-              </Text> 
-            </div>
-          </div>
-          <Transactions />
-          </div>
-        </Wrapper>
-      </Fade>
-      <Footer/>
-    </Wrapper>
-  )
-}
+    <div>
+      <Head>
+        <title>Digital Wallet | Cloudchain</title>
+        <meta name="description" content="Your digital wallet for crypto transactions" />
+      </Head>
 
-export default Wallet
+      <header>
+        <h1>Digital Wallet</h1>
+      </header>
+
+      <main>
+        <section>
+          <Card>
+            <p><strong>Account:</strong> {connectedAccount}</p>
+          </Card>
+          
+          <div>
+            <FaEthereum />
+            <span>{balance} ETH</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Send Transaction</h2>
+          <Input
+            name="addressTo"
+            placeholder="Recipient Address"
+            value={formData.addressTo}
+            onChange={handleInputChange}
+          />
+          <Input
+            name="amount"
+            type="number"
+            placeholder="Amount (ETH)"
+            value={formData.amount}
+            onChange={handleInputChange}
+          />
+          <Input
+            name="keyword"
+            placeholder="Keyword"
+            value={formData.keyword}
+            onChange={handleInputChange}
+          />
+          <Input
+            name="message"
+            placeholder="Message"
+            value={formData.message}
+            onChange={handleInputChange}
+          />
+          <Button onClick={handleSendTransaction}>
+            Send Transaction
+          </Button>
+        </section>
+
+        <section>
+          <h2>Latest Transactions</h2>
+          {transactions.map((transaction: any, index: number) => (
+            <Transaction
+              key={index}
+              addressFrom={transaction.addressFrom}
+              addressTo={transaction.addressTo}
+              amount={transaction.amount}
+              message={transaction.message}
+              keyword={transaction.keyword}
+              timestamp={transaction.timestamp}
+            />
+          ))}
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Cloudchain. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+};
+
+export default Wallet;
