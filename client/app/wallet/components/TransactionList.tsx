@@ -13,7 +13,7 @@ interface TransactionListProps {
 
 export function TransactionList({ transactions, loading, onRefresh }: TransactionListProps) {
   return (
-    <div>
+    <div className='flex flex-col justify-between h-full'>
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-lg font-medium text-gray-900">Recent Transactions</h2>
         <button

@@ -5,72 +5,82 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 py-6">
+      <header className="bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-5">
           <div className="flex items-center space-x-3">
-            <FaEthereum className="h-8 w-8 text-gray-900" />
-            <h1 className="text-2xl font-semibold text-gray-900">Cloudchain</h1>
+            <div className="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center">
+              <FaEthereum className="h-6 w-6 text-white" />
+            </div>
+            <h1 className="text-2xl font-bold text-slate-900">Cloudchain</h1>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-6 py-16">
-        <div className="text-center space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-5xl font-light text-gray-900">
+      <main className="max-w-5xl mx-auto px-6 py-20">
+        <div className="text-center space-y-12">
+          {/* Hero Section */}
+          <div className="space-y-6">
+            <h2 className="text-6xl font-bold text-slate-900 leading-tight">
               Modern Crypto
               <br />
-              <span className="font-normal">Transactions</span>
+              <span className="text-slate-600">Transactions</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               Send Ethereum transactions with messages and GIFs on Sepolia testnet. 
               Clean, simple, and secure.
             </p>
           </div>
 
-          <div className="pt-8">
+          {/* CTA Button */}
+          <div className="pt-4">
             <Link
               href="/wallet"
-              className="inline-flex items-center bg-gray-900 text-white px-8 py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
+              className="inline-block bg-slate-900 text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-lg shadow-slate-900/10"
             >
               Open Wallet
             </Link>
           </div>
 
-          {/* Features */}
-          <div className="pt-16 grid md:grid-cols-3 gap-8 text-left">
-            <div className="space-y-3">
-              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                <FaEthereum className="h-6 w-6 text-gray-600" />
+          {/* Features Grid */}
+          <div className="pt-12 grid md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-2xl p-8 border border-slate-200 text-left">
+              <div className="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center mb-5">
+                <FaEthereum className="h-7 w-7 text-slate-700" />
               </div>
-              <h3 className="text-lg font-medium text-gray-900">MetaMask Integration</h3>
-              <p className="text-gray-600">Seamless wallet connection with MetaMask for secure transactions.</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">MetaMask Integration</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Seamless wallet connection with MetaMask for secure transactions.
+              </p>
             </div>
             
-            <div className="space-y-3">
-              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-gray-600 font-semibold text-lg">🎬</span>
+            <div className="bg-white rounded-2xl p-8 border border-slate-200 text-left">
+              <div className="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center mb-5 text-3xl">
+                🎬
               </div>
-              <h3 className="text-lg font-medium text-gray-900">Visual Transactions</h3>
-              <p className="text-gray-600">Add keywords to your transactions and see them come alive with GIFs.</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Visual Transactions</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Add keywords to your transactions and see them come alive with GIFs.
+              </p>
             </div>
             
-            <div className="space-y-3">
-              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-gray-600 font-semibold text-lg">⚡</span>
+            <div className="bg-white rounded-2xl p-8 border border-slate-200 text-left">
+              <div className="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center mb-5 text-3xl">
+                ⚡
               </div>
-              <h3 className="text-lg font-medium text-gray-900">Modern Tech</h3>
-              <p className="text-gray-600">Built with Next.js 15, TypeScript, and deployed on Sepolia testnet.</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Modern Tech</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Built with Next.js 15, TypeScript, and deployed on Sepolia testnet.
+              </p>
             </div>
           </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-100 mt-16">
-        <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="text-center text-gray-500">
+      <footer className="bg-white border-t border-slate-200 mt-20">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="text-center text-slate-500">
             <p>&copy; 2025 Cloudchain. Built with modern web technologies.</p>
           </div>
         </div>
