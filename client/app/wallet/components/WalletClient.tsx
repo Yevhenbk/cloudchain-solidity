@@ -59,14 +59,14 @@ export function WalletClient() {
     setFormErrors({})
 
     try {
+      console.log('Form submitted with data:', formData)
+      
       // Send transaction
       const result = await sendTransaction(formData)
+      console.log('Transaction result:', result)
       
       if (result.success) {
-        // Server action for optimistic updates
-        await submitTransactionAction(formData)
-        
-        // Clear form
+        // Clear form immediately for better UX
         setFormData({
           addressTo: '',
           amount: '',
@@ -74,16 +74,41 @@ export function WalletClient() {
           message: ''
         })
         
-        // Refresh balance
-        await refreshBalance()
+        // Show success message with transaction hash
+        const message = result.txHash 
+          ? `Transaction sent! Hash: ${result.txHash.slice(0, 10)}...\nView on Etherscan: https://sepolia.etherscan.io/tx/${result.txHash}`
+          : 'Transaction sent successfully!'
+        alert(message)
         
-        alert('Transaction sent successfully!')
+        // Immediate optimistic refresh attempt (may not show transaction yet)
+        setTimeout(() => {
+          console.log('Immediate transaction list refresh attempt...')
+          fetchTransactions()
+        }, 500)
+        
+        // Another refresh attempt after a longer delay
+        setTimeout(() => {
+          console.log('Delayed transaction list refresh attempt...')
+          fetchTransactions()
+        }, 5000)
+        
+        // Start background operations (don't wait for them)
+        Promise.all([
+          submitTransactionAction(formData).catch(err => 
+            console.warn('Server action failed:', err)
+          ),
+          refreshBalance().catch(err => 
+            console.warn('Balance refresh failed:', err)
+          )
+        ])
+        
       } else {
+        console.error('Transaction failed:', result.error)
         alert(result.error || 'Transaction failed')
       }
     } catch (error) {
       console.error('Transaction error:', error)
-      alert('Transaction failed')
+      alert(`Transaction failed: ${error instanceof Error ? error.message : 'Unknown error'}`)
     } finally {
       setIsSubmitting(false)
     }
@@ -271,9 +296,16 @@ export function WalletClient() {
               <button
                 type="submit"
                 disabled={isSubmitting || transactionLoading.isLoading}
-                className="w-full bg-gray-900 hover:bg-gray-800 disabled:opacity-50 text-white py-3 rounded-lg font-medium transition-colors duration-200"
+                className="w-full bg-gray-900 hover:bg-gray-800 disabled:opacity-50 text-white py-3 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center gap-2"
               >
-                {isSubmitting ? 'Sending...' : 'Send Transaction'}
+                {isSubmitting ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Sending...
+                  </>
+                ) : (
+                  'Send Transaction'
+                )}
               </button>
             </form>
           </div>

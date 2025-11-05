@@ -198,15 +198,27 @@ export function useTransactions(walletAddress?: string | null) {
 
   const fetchTransactions = useCallback(async () => {
     try {
+      console.log('Fetching transactions...')
       setLoading({ isLoading: true, error: null })
       
       const contract = await getEthereumContract()
+      console.log('Contract obtained for transaction fetch')
+      
+      // Check transaction count first
+      const transactionCount = await contract.getTransactionCount()
+      console.log('Total transaction count:', transactionCount.toString())
+      
       const rawTransactions = await contract.getAllTransactions()
+      console.log('Raw transactions from contract:', rawTransactions.length)
+      console.log('Raw transaction data:', rawTransactions)
       
       const formattedTransactions = rawTransactions.map(formatTransaction)
-      setTransactions(formattedTransactions)
+      console.log('Formatted transactions:', formattedTransactions)
       
+      setTransactions(formattedTransactions)
       setLoading({ isLoading: false, error: null })
+      
+      console.log('Transaction fetch completed successfully')
     } catch (error) {
       console.error('Failed to fetch transactions:', error)
       setLoading({ 
@@ -221,38 +233,88 @@ export function useTransactions(walletAddress?: string | null) {
       setLoading({ isLoading: true, error: null })
 
       const contract = await getEthereumContract()
+      
+      // Health check: verify contract is accessible
+      try {
+        const contractAddress = await contract.getAddress()
+        console.log('Contract address verified:', contractAddress)
+      } catch (addressError) {
+        console.error('Contract address verification failed:', addressError)
+        throw new Error('Contract not accessible')
+      }
+      
       const parseAmount = ethers.parseEther(data.amount)
+
+      // Get transaction count before sending
+      const countBefore = await contract.getTransactionCount()
+      console.log('Transaction count before sending:', countBefore.toString())
 
       const tx = await contract.addToBlockchain(
         data.addressTo,
         parseAmount,
         data.message,
-        data.keyword
+        data.keyword,
+        {
+          gasLimit: 300000, // Increased gas limit significantly
+          maxFeePerGas: ethers.parseUnits('30', 'gwei'), // Higher gas price for faster processing
+          maxPriorityFeePerGas: ethers.parseUnits('3', 'gwei')
+        }
       )
+      console.log('Transaction sent, hash:', tx.hash)
+      console.log('Transaction object:', tx)
 
-      await tx.wait()
-
-      // Refresh transactions
-      await fetchTransactions()
+      // Start background confirmation and refresh (don't wait for it)
+      confirmTransactionInBackground(tx, countBefore)
 
       setLoading({ isLoading: false, error: null })
-      return { success: true }
+      return { success: true, txHash: tx.hash }
     } catch (error) {
+      console.error('Transaction failed:', error)
       const errorMessage = handleContractError(error)
       setLoading({ isLoading: false, error: errorMessage })
       return { success: false, error: errorMessage }
+    }
+  }, [])
+
+  // Background confirmation handler
+  const confirmTransactionInBackground = useCallback(async (tx: any, countBefore?: any) => {
+    try {
+      console.log('Waiting for confirmation in background...')
+      const receipt = await tx.wait()
+      console.log('Transaction confirmed in background')
+      console.log('Transaction receipt:', receipt)
+      
+      // Check if transaction was successful
+      if (receipt.status === 1) {
+        console.log('Transaction was successful!')
+        
+        // Verify transaction count increased
+        if (countBefore) {
+          const contract = await getEthereumContract()
+          const countAfter = await contract.getTransactionCount()
+          console.log('Transaction count after:', countAfter.toString())
+          console.log('Count increased by:', countAfter - countBefore)
+        }
+      } else {
+        console.error('Transaction failed with status:', receipt.status)
+      }
+      
+      // Refresh transactions after confirmation with a longer delay
+      setTimeout(() => {
+        console.log('Refreshing transactions after confirmation...')
+        fetchTransactions()
+      }, 2000) // Increased delay to ensure blockchain state is updated
+    } catch (error) {
+      console.error('Background confirmation failed:', error)
+      // Don't throw here as the user already got success feedback
     }
   }, [fetchTransactions])
 
   // Auto-fetch transactions when wallet connects
   useEffect(() => {
     if (walletAddress) {
-      // Add a small delay to ensure the wallet is fully connected
-      const timer = setTimeout(() => {
-        fetchTransactions()
-      }, 500)
-      
-      return () => clearTimeout(timer)
+      // Fetch immediately when wallet connects
+      fetchTransactions()
     } else {
       // Clear transactions when wallet disconnects
       setTransactions([])

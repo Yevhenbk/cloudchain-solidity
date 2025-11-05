@@ -1,8 +1,11 @@
 import { z } from 'zod'
+import { isValidAddress } from '../utils/blockchain'
 
 // Transaction validation schema
 export const TransactionSchema = z.object({
-  addressTo: z.string().regex(/^0x[a-fA-F0-9]{40}$/, 'Invalid Ethereum address'),
+  addressTo: z.string().refine((val: string) => {
+    return isValidAddress(val)
+  }, 'Invalid Ethereum address'),
   amount: z.string().refine((val: string) => {
     const num = parseFloat(val)
     return num > 0 && num <= 1000 // Reasonable limits
