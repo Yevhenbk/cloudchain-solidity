@@ -9,6 +9,9 @@ export { TransactionCard } from './TransactionCard'
 // Interactive elements (client components)
 export { RefreshButton } from './RefreshButton'
 
+// Wallet wrapper (dynamic client component)
+export { WalletWrapper } from './WalletWrapper'
+
 // State presentation (server components)
 export { EmptyState, LoadingState } from './TransactionStates'
 export { ErrorAlert } from './ErrorAlert'

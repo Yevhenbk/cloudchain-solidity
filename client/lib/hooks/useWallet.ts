@@ -25,9 +25,10 @@ export function useWallet() {
     chainId: null
   })
   const [loading, setLoading] = useState<LoadingState>({
-    isLoading: false,
+    isLoading: true, // Start with loading true to check existing connection
     error: null
   })
+  const [isInitialized, setIsInitialized] = useState(false)
 
   const connectWallet = useCallback(async () => {
     if (!window.ethereum) {
@@ -63,12 +64,14 @@ export function useWallet() {
       })
 
       setLoading({ isLoading: false, error: null })
+      setIsInitialized(true)
     } catch (error) {
       console.error('Wallet connection failed:', error)
       setLoading({ 
         isLoading: false, 
         error: error instanceof Error ? error.message : 'Connection failed' 
       })
+      setIsInitialized(true)
     }
   }, [])
 
@@ -100,7 +103,11 @@ export function useWallet() {
   // Check for existing connection on mount
   useEffect(() => {
     const checkConnection = async () => {
-      if (!window.ethereum) return
+      if (!window.ethereum) {
+        setLoading({ isLoading: false, error: null })
+        setIsInitialized(true)
+        return
+      }
 
       try {
         const accounts = await window.ethereum.request({ 
@@ -122,6 +129,9 @@ export function useWallet() {
         }
       } catch (error) {
         console.error('Connection check failed:', error)
+      } finally {
+        setLoading({ isLoading: false, error: null })
+        setIsInitialized(true)
       }
     }
 
@@ -171,6 +181,7 @@ export function useWallet() {
   return {
     wallet,
     loading,
+    isInitialized,
     connectWallet,
     disconnectWallet,
     refreshBalance

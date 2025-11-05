@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useWallet, useTransactions } from '../../../lib/hooks/useWallet'
 import { TransactionSchema } from '../../../lib/types/blockchain'
 import { submitTransactionAction } from '../../../lib/actions/wallet'
@@ -11,7 +11,8 @@ import { ErrorBoundary } from './ErrorBoundary'
 import { GifDisplay } from './GifDisplay'
 
 export function WalletClient() {
-  const { wallet, loading: walletLoading, connectWallet, refreshBalance } = useWallet()
+  const [isMounted, setIsMounted] = useState(false)
+  const { wallet, loading: walletLoading, isInitialized, connectWallet, refreshBalance } = useWallet()
   const { transactions, loading: transactionLoading, fetchTransactions, sendTransaction } = useTransactions(wallet.address)
   
   const [formData, setFormData] = useState<TransactionInput>({
@@ -22,6 +23,11 @@ export function WalletClient() {
   })
   const [formErrors, setFormErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Ensure component is mounted before rendering wallet-dependent content
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -81,6 +87,44 @@ export function WalletClient() {
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  // Prevent hydration issues by ensuring client-side only rendering
+  if (!isMounted) {
+    return (
+      <div className="flex items-center justify-center py-16">
+        <div className="text-center space-y-6 max-w-md">
+          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto">
+            <span className="text-2xl">⏳</span>
+          </div>
+          <div className="space-y-2">
+            <h2 className="text-2xl font-light text-gray-900">Loading...</h2>
+            <p className="text-gray-600">
+              Preparing wallet interface...
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // Show loading during initial connection check
+  if (!isInitialized) {
+    return (
+      <div className="flex items-center justify-center py-16">
+        <div className="text-center space-y-6 max-w-md">
+          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto animate-pulse">
+            <span className="text-2xl">⏳</span>
+          </div>
+          <div className="space-y-2">
+            <h2 className="text-2xl font-light text-gray-900">Checking Connection</h2>
+            <p className="text-gray-600">
+              Checking for existing wallet connection...
+            </p>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   if (!wallet.isConnected) {

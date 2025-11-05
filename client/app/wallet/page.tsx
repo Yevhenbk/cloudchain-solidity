@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import Link from 'next/link'
 import { FaEthereum, FaArrowLeft } from 'react-icons/fa'
-import { WalletClient } from './components/WalletClient'
+import { WalletWrapper } from './components/WalletWrapper'
 
 export default function WalletPage() {
   return (
@@ -35,7 +35,7 @@ export default function WalletPage() {
         </div>
 
         <Suspense fallback={<WalletLoading />}>
-          <WalletClient />
+          <WalletWrapper />
         </Suspense>
       </main>
     </div>
@@ -45,25 +45,18 @@ export default function WalletPage() {
 function WalletLoading() {
   return (
     <div className="space-y-8">
-      {/* Wallet info skeleton */}
+      {/* Wallet connection check loading */}
       <div className="bg-white border border-gray-100 rounded-lg p-6">
-        <div className="flex items-center justify-between">
-          <div className="space-y-3">
-            <div className="h-6 bg-gray-100 rounded w-32"></div>
-            <div className="h-8 bg-gray-100 rounded w-48"></div>
+        <div className="flex items-center justify-center py-12">
+          <div className="text-center space-y-4">
+            <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto animate-pulse">
+              <span className="text-xl">⏳</span>
+            </div>
+            <div className="space-y-2">
+              <div className="h-6 bg-gray-100 rounded w-48 mx-auto"></div>
+              <div className="h-4 bg-gray-100 rounded w-64 mx-auto"></div>
+            </div>
           </div>
-          <div className="h-12 w-24 bg-gray-100 rounded"></div>
-        </div>
-      </div>
-      
-      {/* Form skeleton */}
-      <div className="bg-white border border-gray-100 rounded-lg p-6">
-        <div className="h-6 bg-gray-100 rounded w-40 mb-6"></div>
-        <div className="space-y-4">
-          <div className="h-12 bg-gray-100 rounded"></div>
-          <div className="h-12 bg-gray-100 rounded"></div>
-          <div className="h-12 bg-gray-100 rounded"></div>
-          <div className="h-12 bg-gray-100 rounded"></div>
         </div>
       </div>
     </div>
