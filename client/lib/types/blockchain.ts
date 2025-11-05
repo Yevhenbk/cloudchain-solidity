@@ -15,8 +15,8 @@ export type TransactionInput = z.infer<typeof TransactionSchema>
 
 // Blockchain transaction from contract
 export interface BlockchainTransaction {
-  addressFrom: string
-  addressTo: string
+  sender: string        // Smart contract uses 'sender' not 'addressFrom'
+  receiver: string      // Smart contract uses 'receiver' not 'addressTo'
   amount: bigint
   message: string
   keyword: string

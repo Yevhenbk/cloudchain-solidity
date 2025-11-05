@@ -60,8 +60,8 @@ export const getEthereumContract = async () => {
 // Format blockchain transaction for UI
 export const formatTransaction = (transaction: BlockchainTransaction): FormattedTransaction => {
   return {
-    addressFrom: transaction.addressFrom,
-    addressTo: transaction.addressTo,
+    addressFrom: getChecksumAddress(transaction.sender),     // Map 'sender' to 'addressFrom' with checksum
+    addressTo: getChecksumAddress(transaction.receiver),     // Map 'receiver' to 'addressTo' with checksum
     amount: Number(formatEther(transaction.amount)),
     message: transaction.message,
     keyword: transaction.keyword,
